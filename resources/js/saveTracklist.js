@@ -21,10 +21,14 @@ function readTracklist(){
 function saveTracklist(){
     //Save all the songs as a tracklist
     //Then add the mixes and associate them to the tracklist(?)
+    //saveArtist()
+    //saveArtistLinks
+    //saveTracklistLinks
+    //saveTracklistArtist
 }
 
 function saveSongs(tracklist){
-	// Needs to consider same song name for different artist,
+	// TODO: Consider same song name for different artist,
 	// for example if I have song1 and artist1 and artist2 share this song name
 
 	tracklist.forEach(function(element, index, array){
@@ -101,22 +105,6 @@ function saveMix(tracklist, index){
     }
 }
 
-//function saveSong(songToSave){
-//	//Search for tracklist[index].songName
-//	if(!checkIfSongExists(songToSave)){
-//		//Save the song
-//		postSong(songToSave);
-//	}
-//}
-//
-//function checkIfSongExists(songToSave){
-//	if(searchSong(songToSave) != undefined){
-//		return true; //Exists
-//	}else{
-//		return false; //Doesn't exist
-//	}
-//}
-
 function saveArtistIfDoesntExists(artist){
     //Ajax call
     //If null/empty or doesnt exists return false
@@ -151,11 +139,6 @@ function postArtist(artist) {
 }
 
 //Insert mix
-
-//function postMix(tracklist, index, lastNumberTrack){
-//    //Post mix ajax
-//    console.log("Mix posted: First: " + tracklist[lastNumberTrack].songName + " Second: " + tracklist[index].songName);
-//}
 
 function postMix(tracklist, index, lastNumberTrack) {
     var mixData = {songName: tracklist[lastNumberTrack], nextSong: tracklist[index].songName[0]};
@@ -216,13 +199,6 @@ function insertMixIntoSong(songId, mixId){
 }
 
 //Submiting new song
-
-//function postSong(songToSave){
-//    //ajax post
-//    var songJson = {"songName": songToSave.songName,"bpm":"","key":"","recordLabel":"","genre":"","summary":"","songArtist":[{"_id":""}]};
-//    console.log("Song posted: " + songToSave.songName);
-//}
-
 
 function postSong(songData){
 

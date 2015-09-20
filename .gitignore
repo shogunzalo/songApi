@@ -1,1 +1,5 @@
 /node_modules
+
+resources/bootstrap/js/npm.js
+
+npm-debug.log
