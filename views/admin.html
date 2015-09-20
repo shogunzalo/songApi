@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mymodal">
+<head>
+<link href="/css/nextSong.css" rel="stylesheet" media="screen">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script type=text/javascript src="/js/jquery.min.js"></script>
+<script type=text/javascript src="/bootstrap/js/bootstrap.min.js"></script>
+<script type=text/javascript src="/js/typeahead.js"></script>
+<script type=text/javascript src="/js/angular.min.js"></script>
+<script type=text/javascript src="/js/angularApp.js"></script>
+<script type=text/javascript src="/js/app.js"></script>
+<script type=text/javascript src="/js/crud.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+		  <a class="glyphicon glyphicon-home" href="Home" aria-hidden="true"> Home</a>
+          <a class="glyphicon glyphicon-user" href="Admin" aria-hidden="true"> Admin</a>
+        </div>
+      </div>
+    </nav>
+
+<div class='jumbotron' style="text-align: center">
+	<div class="container">
+		<h1>Welcome to the admin page</h1>
+	</div>
+</div>
+
+<div ng-controller="MainCtrl" class="container">
+  <h1>Add: </h1>
+  <button ng-click="toggleSongModal()" class="btn btn-default">Add Song</button>
+  
+  <button ng-click="toggleArtistModal()" class="btn btn-default">Add Artist</button>
+  
+  <button ng-click="toggleMixModal()" class="btn btn-default">Add Mix</button>
+
+  <button ng-click="toggleNewSongModal()" class="btn btn-default">ADD SONG</button>
+    
+  <modal title="Song form" visible="showSongModal">
+    <form role="form" id="addSongForm" method="post">
+      <div class="form-group">
+        <label for="songName">Name</label>
+        <input type="text" name="songName" class="form-control" id="songName" placeholder="Song Name" required/>
+      </div>
+      <div class="form-group" id="songArtistDropdown">
+        <label for="songArtist">Artist</label>
+        <input type="text" name="songArtist" class="form-control typeahead" id="songArtist" placeholder="Artist" required/>
+      </div>
+      <div class="form-group">
+        <label for="bpm">Bpm</label>
+        <input type="text" name="bpm" class="form-control" id="Bpm" placeholder="Song Bpm" />
+      </div>
+      <div class="form-group">
+        <label for="key">Key</label>
+        <input type="text" name="key" class="form-control" id="key" placeholder="Song Key" />
+      </div>
+      <div class="form-group">
+        <label for="recordLabel">Record Label</label>
+        <input type="text" name="recordLabel" class="form-control" id="recordLabel" placeholder="Record Label" />
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" class="form-control" id="genre" placeholder="Song genre" />
+      </div>
+      <div class="form-group">
+        <label for="summary">Summary</label>
+        <input type="text" name="summary" class="form-control" id="summary" placeholder="Song summary" />
+      </div>
+<!--       <div class="form-group"> -->
+<!--         <label for="songMixs">songMixs</label> -->
+<!--         <input type="text" name="songMixs" class="form-control" id="songMixs" placeholder="Goes well with" /> -->
+<!--       </div> -->
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </modal>
+  
+  <modal title="Artist Form" visible="showArtistModal">
+    <form role="form" id="addArtistForm" method="post">
+      <div class="form-group">
+        <label for="artistName">artistName</label>
+        <input type="text" name="artistName" class="form-control" id="artistName" placeholder="Artist Name" required/>
+      </div>
+      <div class="form-group">
+        <label for="artistStyles">artistStyles</label>
+        <input type="text" name="artistStyles" class="form-control" id="artistStyles" placeholder="Artist" />
+      </div>
+      <div class="form-group">
+        <label for="artistThumbnail">artistThumbnail</label>
+        <input type="file" name="artistThumbnail" class="form-control" id="artistThumbnail" accept="image/*"/>
+      </div>
+      <div class="form-group">
+        <label for="artistDesc">artistDesc</label>
+        <input type="text" name="artistDesc" class="form-control" id="artistDesc" placeholder="artistDesc" required/>
+      </div>
+      <div class="form-group">
+        <label for="artistCountry">artistCountry</label>
+        <input type="text" name="artistCountry" class="form-control" id="artistCountry" placeholder="artistCountry" />
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </modal>
+  
+  <modal title="Mix form" visible="showMixModal">
+      <stepset next-text="Next" previous-text="Previous" submit-text="Submit" submit-action="submitNewMixNg">
+          <form id="addNewMixForm">
+              <step title="Select the song 1">
+                  <div class="control-group">
+                      <div class="form-group" id="the-basics">
+                          <input type="text" name="songName" required="" class="form-control typeahead" id="songName1" placeholder="Song 1" required/>
+                      </div>
+                      <a></a>
+                  </div>
+              </step>
+              <step title="Select the song 2">
+                  <div class="control-group">
+                      <div class="controls">
+                          <div class="form-group" id="allButExcluded">
+                              <input type="text" name="nextSong" class="form-control typeahead" id="nextSong" required="" placeholder="Song Name" required/>
+                          </div>
+                      </div>
+                  </div>
+              </step>
+              <step title="Insert comments about this mix">
+                  <div class="control-group">
+                      <div class="form-group">
+                          <label for="comments">comments</label>
+                          <input type="text" name="comments" min="0" max="200" class="form-control" required="true" id="comments" placeholder="Song comments" />
+                      </div>
+                      <div class="form-group">
+                          <label for="rating">rating</label>
+                          <input type="text" name="rating" class="form-control" id="rating" required="" placeholder="Song rating" />
+                      </div>
+                  </div>
+              </step>
+          </form>
+      </stepset>
+
+  </modal>
+
+    <modal title="Add new song" visible="showNewSongModal">
+        <div id="content" style="margin: 20px">
+            <stepset next-text="Next" previous-text="Previous" submit-text="Submit" submit-action="submitNewSongNg">
+                <form id="addNewSongForm">
+                    <step title="Select the Artist">
+                        <div class="control-group">
+                            <div class="form-group" id="songArtistDropdown">
+                                <input type="text" name="songArtist" required="" class="form-control typeahead" id="songArtist" placeholder="Artist" required/>
+                            </div>
+                            <a></a>
+                        </div>
+                    </step>
+                    <step title="Insert the song name">
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="form-group">
+                                    <label for="songName">Name</label>
+                                    <input type="text" name="songName" class="form-control" id="songName" required="" placeholder="Song Name" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </step>
+                    <step title="Insert the song details">
+                        <div class="control-group">
+                            <div class="form-group">
+                                <label for="bpm">Bpm</label>
+                                <input type="number" name="bpm" min="0" max="200" class="form-control" required="true" id="Bpm" placeholder="Song Bpm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="key">Key</label>
+                                <input type="text" name="key" class="form-control" id="key" required="" placeholder="Song Key" />
+                            </div>
+                            <div class="form-group">
+                                <label for="recordLabel">Record Label</label>
+                                <input type="text" name="recordLabel" class="form-control" id="recordLabel" required="" placeholder="Record Label" />
+                            </div>
+                            <div class="form-group">
+                                <label for="genre">Genre</label>
+                                <input type="text" name="genre" class="form-control" id="genre" required="" placeholder="Song genre" />
+                            </div>
+                            <div class="form-group">
+                                <label for="summary">Summary</label>
+                                <input type="text" name="summary" class="form-control" id="summary" required="" placeholder="Song summary" />
+                            </div>
+                        </div>
+                    </step>
+                </form>
+            </stepset>
+        </div>
+        <script type="text/ng-template" id="partials/stepset.html">
+            <div>
+                <form name="stepForm">
+                    <div id="steps" ng-transclude>
+                    </div>
+
+                    <div id="navBar">
+                      <span>
+                        <button class="btn" ng-click="previous()" ng-disabled="!previousEnabled">{{previousText}}</button>
+                        <button class="btn" ng-click="next()" ng-disabled="!nextEnabled">{{nextText}}</button>
+                        <button class="btn btn-success" ng-click="submit()" ng-disabled="stepForm.$invalid || !submitEnabled">{{submitText}}</button>
+                      </span>
+                    </div>
+                </form>
+            </div>
+        </script>
+        <script type="text/ng-template" id="partials/step.html">
+            <div ng-show="isDisplayed">
+                <h1>{{title}}</h1>
+                <p>{{description}}</p>
+                <div ng-transclude></div>
+            </div>
+        </script>
+    </modal>
+</div>
+</div>
+
+</body>
+</html>

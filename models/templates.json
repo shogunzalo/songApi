@@ -1,0 +1,38 @@
+//Artist template
+
+{
+  "artistName": "Dangry",
+  "artistStyles": "Electro",
+  "artistThumbnail": "Foto bonita",
+  "artistDesc": "Dangry is the best DJ",
+  "artistCountry": "Chile"
+}
+
+//Tracklist template
+{
+  "tracklistArtist": "54c9ae5f1fab0f6f03000002",
+  "tracklistName": "Dangry Live at Nowhere",
+  "date": "10/12/14",
+  "tracks": ["5557c42219de07b09dc8ddda", "54d6d5a959a48b959e00000c", "54d6d13259a48b959e000002", "54d58391b5c31b108600000b"],
+  "links": "no links"
+}
+
+//Song template
+
+{
+  "songName": "Cancion 1",
+  "songArtist": "54c9ae5f1fab0f6f03000002",
+  "bpm": "128",
+  "key": "1A",
+  "recordLabel": "DNG Records",
+  "genre": "Electro",
+  "summary": "Great song"
+}
+
+//Mix template
+
+{
+  "songOne": "Cancion 1",
+  "songTwo": "54c9ae5f1fab0f6f03000002",
+  "recomendations": "128"
+}

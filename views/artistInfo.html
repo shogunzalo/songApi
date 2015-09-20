@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mymodal">
+<head>
+    <link href="/css/nextSong.css" rel="stylesheet" media="screen">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/artistInfo.css" rel="stylesheet">
+    <script type=text/javascript src="/js/jquery.min.js"></script>
+    <script type=text/javascript src="/js/handlebars.js"></script>
+    <script type=text/javascript src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type=text/javascript src="/js/typeahead.js"></script>
+    <script type=text/javascript src="/js/angular.min.js"></script>
+    <script type=text/javascript src="/js/angularApp.js"></script>
+    <script type=text/javascript src="/js/artistInfo.js"></script>
+    <script type=text/javascript src="/js/app.js"></script>
+
+</head>
+
+<body onload="searchArtist();">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="glyphicon glyphicon-home" href="Home" aria-hidden="true"> Home</a>
+            <a class="glyphicon glyphicon-user" href="Admin" aria-hidden="true"> Admin</a>
+        </div>
+    </div>
+</nav>
+
+<div class='jumbotron' style="text-align: center">
+    <div class="container">
+        <h1>Welcome to the Artist page</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div id="artistInfo" class="fb-profile">
+        <!--<img align="left" class="fb-image-profile thumbnail" src="http://dummyimage.com/300&text=Gonzalo" alt="Profile image example"/>-->
+        <!--<div id="artistInfoText" class="fb-profile-text">-->
+            <!--<h1>Eli Macy</h1>-->
+            <!--<p>Girls just wanna go fun.</p>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<div id='songMatchesDiv' class='songMatchesDiv container'></div>
+
+<div id='artistTracklists' class='songMatchesDiv container'></div>
+
+<div id='artistSongs' class='songMatchesDiv container'></div>
+
+
+<div ng-controller="MainCtrl" class="container">
+</div>
+
+<script id="artistTracklistsTemplate" type="text/x-handlebars-template">
+    <ul>
+        {{#each objects}}
+
+        <div id="artistTracklistsText" class="fb-profile-text">
+            <h2>Artist tracklists: {{tracklistName}}</h2>
+            <h2>
+                <a id="{{tracklistName}}" href="tracklistInfo?{{tracklistName}}" style="cursor:pointer">{{tracklistName}}
+                </a>
+            </h2>
+        </div>
+        </div>
+    </ul>
+    <hr>
+    {{/each}}
+</script>
+
+<script id="artistTemplate" type="text/x-handlebars-template">
+    <ul>
+        {{#each objects}}
+
+        <img align="left" src="http://dummyimage.com/300x300&amp;text={{artistName}}" class="fb-image-profile thumbnail">
+
+        <div id="artistInfoText" class="fb-profile-text">
+            <h1>{{artistName}}</h1>
+            <p>{{artistDesc}}</p>
+        </div>
+        </div>
+    </ul>
+    <hr>
+    {{/each}}
+</script>
+
+<script id="songsTemplate" type="text/x-handlebars-template">
+    <ul>
+        {{#each objects}}
+        {{#songs}}
+        <div class="row">
+            <img src="/images/discImage.png" width="64" height="64" class="img-thumbnail pull-left">
+            <div class="media-body col-md-8">
+                <div class="well well-lg">
+                    <h4>
+                        <a id="{{songName}}" href="home?{{songName}}" style="cursor:pointer">{{songName}}
+                        </a>
+                    </h4>
+                    {{#songArtist}}
+                    <span><a href="/artistInfo?{{artistName}}">
+                        {{artistName}}
+                    </a>
+                    </span>
+                    {{/songArtist}}
+                    <p>{{summary}}</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {{/songs}}
+    {{/each}}
+    </ul>
+</script>
+
+</body>
+</html>

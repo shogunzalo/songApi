@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mymodal">
+<head>
+<title>Next Song</title>
+<link href="/css/nextSong.css" rel="stylesheet" media="screen">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script type=text/javascript src="/js/jquery.min.js"></script>
+<script type=text/javascript src="/js/handlebars.js"></script>
+<script type=text/javascript src="/bootstrap/js/bootstrap.min.js"></script>
+<script type=text/javascript src="/js/angular.min.js"></script>
+<script type=text/javascript src="/js/angularApp.js"></script>
+<script type=text/javascript src="/js/typeahead.js"></script>
+<script type=text/javascript src="/js/app.js"></script>
+
+</head>
+<body onload="searchSong(window.location.search.substring(1))">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div ng-controller="MainCtrl" class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+		  <a class="glyphicon glyphicon-home" href="Home" aria-hidden="true"> Home</a>
+          <a class="glyphicon glyphicon-user" href="Admin" aria-hidden="true"> Admin</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+          <form class="navbar-form">
+            <div id="the-basics" class="form-group">
+              <input id="inputFindSong" {{valueBinding="sName"}} class="typeahead" type="text" placeholder="SEARCH A SONG...">
+            </div>
+
+            <!--<button id="searchButton" type="button" onclick="alertFunction(inputFindSong.value)" class="btn btn-success">Search</button>-->
+            <button id="searchButton" type="button"  onclick="searchSong(inputFindSong.value)" class="btn btn-success">Search</button>
+            <button ng-click="toggleLoginModal()" class="btn btn-default"><span class="glyphicon glyphicon-user"></span>Login</button>
+            <button ng-click="toggleSignupModal()" class="btn btn-default"><span class="glyphicon glyphicon-user"></span>Signup</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+          <modal title="Login form" visible="showLoginModal">
+
+              <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+              <!-- show any messages that come back with authentication -->
+              <!--<% if (message.length > 0) { %>-->
+              <!--<div class="alert alert-danger"><%= message %></div>-->
+              <!--<% } %>-->
+
+              <!-- LOGIN FORM -->
+              <form action="/login" method="post">
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="text" class="form-control" name="email">
+                  </div>
+                  <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="password">
+                  </div>
+
+                  <button type="submit" class="btn btn-warning btn-lg">Login</button>
+              </form>
+
+              <hr>
+
+              <p>Need an account? <a href="#" ng-click="toggleLoginModal(); toggleSignupModal();">Signup</a></p>
+
+          </modal>
+          <modal title="Signup form" visible="showSignupModal">
+              <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+              <!-- show any messages that come back with authentication -->
+              <!--<% if (message.length > 0) { %>-->
+              <!--<div class="alert alert-danger"><%= message %></div>-->
+              <!--<% } %>-->
+
+              <!-- LOGIN FORM -->
+              <form action="/signup" method="post">
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="text" class="form-control" name="email">
+                  </div>
+                  <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="password">
+                  </div>
+
+                  <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+              </form>
+
+              <hr>
+
+              <p>Already have an account? <a href="#" ng-click="toggleSignupModal(); toggleLoginModal();">Login</a></p>
+          </modal>
+      </div>
+</nav>
+
+<div class='jumbotron' style="text-align: center">
+	<div class="container">
+		<h1>Welcome to next song</h1> <!-- Show session name in here -->
+	</div>
+</div>
+
+<!--<div class="container">-->
+	<!--<div class="row">-->
+		<!--<div>-->
+			<!--<h1 class="song-searched-text"></h1>-->
+		<!--</div>-->
+		<!--<div class="col-md-8" id="songSearched">-->
+			<!--<p class="song-searched"></p>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+
+<!--<hr>-->
+
+
+<!--<div id='songMatchesDiv' class='songMatchesDiv container'></div>-->
+
+<div id="contenido">
+
+</div>
+
+<script id="songsTemplate" type="text/x-handlebars-template">
+    <ul>
+        {{#each objects}}
+
+        <div class="row">
+            <img src="/images/discImage.png" width="64" height="64" class="img-thumbnail pull-left">
+            <div class="media-body col-md-8">
+                <div class="well well-lg">
+                    <h4>
+                        <a id="{{songName}}" onclick="searchSong(this.id)" style="cursor:pointer">{{songName}}
+                        </a>
+                    </h4>
+                    {{#songArtist}}
+                    <span><a href="/artistInfo?{{artistName}}">
+                        {{artistName}}
+                        </a>
+                    </span>
+                    {{/songArtist}}
+                    <p>{{summary}}</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </ul>
+    {{/each}}
+</script>
+
+<script id="matchesTemplate" type="text/x-handlebars-template">
+    <ul>
+    <h2>Next Song: </h2>
+    {{#each objects}}
+    {{#songMixs}}
+    <div id="songMatch0" class="row">
+    <img src="/images/discImage.png" width="64" height="64" class="img-thumbnail pull-left">
+    <div id="songMatchSearchedDetails0" class="media-body col-md-8">
+    <div id="songMatchSearchedDetailsDiv0" class="well well-lg">
+    <h4><a id="{{nextSong.songName}}" onclick="searchSong(this.id)" style="cursor:pointer">{{nextSong.songName}}
+    </a></h4>
+    {{#nextSong.songArtist}}
+    <span><a href="/artistInfo?{{artistName}}">
+    {{artistName}}
+    </a>
+    </span>
+    {{/nextSong.songArtist}}
+    {{#recommendations}}
+    <p>{{comments}}</p>
+    {{/recommendations}}
+    </div>
+    </div>
+    </div>
+    <hr>
+    {{/songMixs}}
+    {{/each}}
+    </ul>
+</script>
+
+</body>
+</html>
