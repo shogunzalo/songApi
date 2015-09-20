@@ -9,7 +9,7 @@ exports.findAllArtists = function(req, res) {
 
     console.log('GET /artists')
         res.status(200).jsonp(artist);
-    });
+    }).populate('artistLinks');
 };
 
 //GET - Return a Artist with specified ID
@@ -19,7 +19,7 @@ exports.findArtistById = function(req, res) {
 
     console.log('GET /artists/' + req.params.id);
         res.status(200).jsonp(artist);
-    });
+    }).populate('artistLinks');
 };
 
 //GET - Return a Artist with specified NAME
@@ -29,7 +29,7 @@ exports.findArtistByName = function(req, res) {
 
     console.log('GET /artistName/' + req.params.id);
         res.status(200).jsonp(artist);
-    });
+    }).populate('artistLinks');
 };
 
 //POST - Insert a new Artist in the DB
@@ -42,7 +42,8 @@ exports.addArtist = function(req, res) {
         artistStyles:   	req.body.artistStyles,
         artistThumbnail:    req.body.artistThumbnail,
         artistDesc:         req.body.artistDesc,
-        artistCountry:      req.body.artistCountry
+        artistCountry:      req.body.artistCountry,
+        artistLinks:        req.body.artistLinks
     });
 
     artist.save(function(err, artist) {
@@ -59,6 +60,7 @@ exports.updateArtist = function(req, res) {
         artist.artistThumbnail     = req.body.artistThumbnail;
         artist.artistDesc          = req.body.artistDesc;
         artist.artistCountry       = req.body.artistCountry;
+        artist.artistLinks         = req.body.artistLinks;
 
         artist.save(function(err) {
             if(err) return res.send(500, err.message);

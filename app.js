@@ -59,6 +59,7 @@ var apiMix = require('./controllers/mixs.js');
 var apiArtist = require('./controllers/artists.js');
 var apiSongArtist = require('./controllers/songArtist.js');
 var apiTracklist = require('./controllers/tracklists.js');
+var apiLinks = require('./controllers/links.js');
 
 // var apiSongMix = require('./controllers/songMix.js');
 // var apiTracklist = require('./controllers/tracklists.js');
@@ -68,6 +69,7 @@ app.post('/song', apiSong.addSong);
 app.post('/artist', apiArtist.addArtist);
 app.post('/mix', apiMix.addMix);
 app.post('/tracklist', apiTracklist.addTracklist);
+app.post('/links', apiLinks.addLinks);
 
 //PUT
 app.put('/addMix/:id', apiSong.addMixs);

@@ -13,32 +13,145 @@ var lastNumberTrack = 0;
 function readTracklist(){
 	lastNumberTrack = 0;
     $.getJSON("/js/test.json", function(json) {
-        console.log(json); // this will show the info it in firebug console
-        saveSongs(json)
+        console.log(json);
+        saveTracklist(json);
+        //saveSongs(json)
     });
 }
 
-function saveTracklist(){
-    //Save all the songs as a tracklist
-    //Then add the mixes and associate them to the tracklist(?)
-    //saveArtist()
-    //saveArtistLinks
-    //saveTracklistLinks
-    //saveTracklistArtist
+//---------------------
+
+function saveTracklist(json){
+    json[0].tracklistArtist.forEach(function(element, index, array){
+        saveArtistIfDoesntExists(element);
+    });
+
+    var tracklistId;
+    createTracklist(json, function(result){tracklistId = result;});
+    saveTracklistSongs(json, tracklistId);
+
+
 }
 
-function saveSongs(tracklist){
-	// TODO: Consider same song name for different artist,
-	// for example if I have song1 and artist1 and artist2 share this song name
+function saveTracklistSongs(tracklist){
 
-	tracklist.forEach(function(element, index, array){
+    tracklist.forEach(function(element, index, array){
         saveArtistIfDoesntExists(element.songArtist[0]);
         saveSongIfDoesntExists(element);
-		if(index != 0){
-			saveMix(array, index, lastNumberTrack);
-		}
-	});
+        saveSongToTracklist(element);
+        if(index >= 1){ //Don't mix the first song
+            saveMix(array, index, lastNumberTrack);
+        }
+    });
+
 }
+
+function createTracklist(json, cb){
+
+    postLinks(json[0].tracklistLinks)
+
+    var tracklist = {tracklistArtist: json[0].artistName, tracklistName: json[0].tracklistName, date: json[0].tracklistDate, tracklistGenres: genresId, tracklistLinks: tracklistLinks};
+
+}
+
+function saveSongToTracklist(song){
+
+}
+
+//function saveSongs(tracklist){
+//    // TODO: Consider same song name for different artist,
+//    // for example if I have song1 and artist1 and artist2 share this song name
+//
+//    tracklist.forEach(function(element, index, array){
+//        saveArtistIfDoesntExists(element.songArtist[0]);
+//        saveSongIfDoesntExists(element);
+//        if(index >= 1){ //Don't mix the first song
+//            saveMix(array, index, lastNumberTrack);
+//        }
+//    });
+//}
+
+//------
+
+function saveArtistIfDoesntExists(artist){
+    //Ajax call
+    //If null/empty or doesnt exists return false
+    return $.ajax({
+        url: artistLookupUrl + artist.artistName,
+        async: false
+    }).then(function(data){
+        if(data == undefined || data.length == 0){
+            var linksId;
+            postLinks(artist, function(result){linksId = result})
+            postArtist(artist, linksId);
+            //cb(x);
+        }else{
+            return;
+        }
+    });
+}
+
+function postLinks(params, cb){
+
+    var links = {};
+
+    if (params.artistLinks.length > 0){
+        params.artistLinks.forEach(function (element, index, array){
+            if(element.indexOf("soundcloud") > 0){
+                links.soundCloudLink = element;
+            }else if(element.indexOf("beatport") > 0){
+                links.beatPortLink = element;
+            }else if(element.indexOf("facebook") > 0){
+                links.facebookLink = element;
+            }else if(element.indexOf("twitter") > 0){
+                links.twitterLink = element;
+            }else if(element.indexOf("youtube") > 0){
+                links.youtubeLink = element;
+            }else{
+                links.websiteLink = element;
+            }
+        });
+    }else{
+        return cb("");
+    }
+
+    return $.ajax({
+        url: 'http://localhost:3000/artistLinks/',
+        type: 'post',
+        dataType: 'json',
+        data: links,
+        async: false,
+        success: function(data) {
+            cb(data._id);
+        }
+    });
+}
+
+function postArtist(artist, linksId) {
+
+    var songArtist
+
+    if(linksId.length > 0){
+        songArtist = {artistName: artist.artistName, artistLinks: linksId};
+    }else {
+        songArtist = {artistName: artist.artistName};
+    }
+
+
+    $.ajax({
+        url: 'http://localhost:3000/artist/',
+        type: 'post',
+        dataType: 'json',
+        data: songArtist,
+        async: false,
+        success: function(data) {
+            console.log("Posted artist: " + data.artistName);
+        }
+    });
+    return false;
+}
+
+//-------------------
 
 function mixExists(tracklist, index, cb){
 	//Check for tracklist[index - 1] and next Song as tracklist[index]
@@ -103,39 +216,6 @@ function saveMix(tracklist, index){
 	}else if(boolResult){
         console.log("Mix already exists");
     }
-}
-
-function saveArtistIfDoesntExists(artist){
-    //Ajax call
-    //If null/empty or doesnt exists return false
-    return $.ajax({
-        url: artistLookupUrl + artist,
-        async: false
-    }).then(function(data){
-        if(data == undefined || data.length == 0){
-            postArtist(artist);
-            //cb(x);
-        }else{
-            return;
-        }
-    });
-}
-
-function postArtist(artist) {
-
-    var songArtist = {artistName: artist};
-
-    $.ajax({
-        url: 'http://localhost:3000/artist/',
-        type: 'post',
-        dataType: 'json',
-        data: songArtist,
-        async: false,
-        success: function(data) {
-            console.log("Posting artist: " + data.artistName);
-        }
-    });
-    return false;
 }
 
 //Insert mix

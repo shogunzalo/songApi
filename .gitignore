@@ -3,3 +3,5 @@
 resources/bootstrap/js/npm.js
 
 npm-debug.log
+
+.idea/workspace.xml

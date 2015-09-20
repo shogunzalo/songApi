@@ -4,9 +4,10 @@ var mongoose = require('mongoose'),
 var tracklistSchema = new Schema({
   tracklistArtist:      {type : Schema.Types.ObjectId, ref : 'Artist'},
   tracklistName:        { type: String },
-  date:                 { type: String },
-  tracks:               [{type : Schema.Types.ObjectId, ref : 'Song'}],
-  links:    	        { type: String }
+  tracklistdate:        { type: String },
+  tracklistTracks:      [{type : Schema.Types.ObjectId, ref : 'Song'}],
+  tracklistLinks:    	{type : Schema.Types.ObjectId, ref : 'Link'}
+
 });
 
 module.exports = mongoose.model('Tracklist', tracklistSchema);
