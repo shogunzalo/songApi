@@ -74,9 +74,9 @@ exports.addTracklist = function(req, res) {
     var tracklist 	= 	new Tracklist({
         tracklistArtist:    req.body.tracklistArtist,
         tracklistName:   	req.body.tracklistName,
-        date:  	  		    req.body.date,
-        tracks:   	  		req.body.tracks,
-        links:              req.body.links
+        tracklistDate:  	  		    req.body.date,
+        tracklistTracks:   	  		req.body.tracks,
+        tracklistLinks:              req.body.links
 
     });
 

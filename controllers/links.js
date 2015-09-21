@@ -13,7 +13,8 @@ exports.addLinks = function(req, res) {
         facebookLink:    req.body.facebookLink,
         websiteLink:     req.body.websiteLink,
         twitterLink:     req.body.twitterLink,
-        youtubeLink:     req.body.youtubeLink
+        youtubeLink:     req.body.youtubeLink,
+        mixcloudLink:     req.body.mixcloudLink
     });
 
     Links.save(function(err, Links) {

@@ -7,7 +7,8 @@ var listSchema = new Schema({
     facebookLink:     { type: String },
     websiteLink:      { type: String },
     twitterLink:      { type: String },
-    youtubeLink:      { type: String }
+    youtubeLink:      { type: String },
+    mixcloudLink:      { type: String }
 });
 
 module.exports = mongoose.model('Link', listSchema);

@@ -1,10 +1,3 @@
-//1 Read JSON  
-//2 Save the things
-//2.1 Iterate over the object
-//2.2 Search Item
-//2.2.1 If exist
-
-
 //Call once should be enough
 var songLookupUrl = 'http://localhost:3000/songName/';
 var artistLookupUrl = 'http://localhost:3000/artistName/';
@@ -35,6 +28,9 @@ function saveTracklist(json){
 
 function saveTracklistSongs(tracklist){
 
+    // TODO: Consider same song name for different artist,
+    // for example if I have song1 and artist1 and artist2 share this song name
+
     tracklist.forEach(function(element, index, array){
         saveArtistIfDoesntExists(element.songArtist[0]);
         saveSongIfDoesntExists(element);
@@ -48,9 +44,17 @@ function saveTracklistSongs(tracklist){
 
 function createTracklist(json, cb){
 
-    postLinks(json[0].tracklistLinks)
+    var linksId;
+    var genresId;
+    postGenresIfDontExist();
 
-    var tracklist = {tracklistArtist: json[0].artistName, tracklistName: json[0].tracklistName, date: json[0].tracklistDate, tracklistGenres: genresId, tracklistLinks: tracklistLinks};
+    postLinks(json[0].tracklistLinks, function(result){linksId = result;});
+
+    var tracklist = {tracklistArtist: json[0].artistName, tracklistName: json[0].tracklistName, date: json[0].tracklistDate, tracklistGenres: genresId, tracklistLinks: linksId};
+
+}
+
+function postGenresIfDontExist(){
 
 }
 
@@ -107,6 +111,8 @@ function postLinks(params, cb){
                 links.twitterLink = element;
             }else if(element.indexOf("youtube") > 0){
                 links.youtubeLink = element;
+            }else if(element.indexOf("mixcloud") > 0){
+            links.mixcloudLink = element;
             }else{
                 links.websiteLink = element;
             }
