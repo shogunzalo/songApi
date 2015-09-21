@@ -14,15 +14,22 @@ var Artist = require('../models/artist.js');
 // };
 
 exports.showArtistSongs = function(req, res) {
-    Artist.findById(req.params.id, function(err, artist) {       
-        var songs = Song.find({songArtist: artist._id}, function(error, songs) {   
-            var varSongs = [];       
-            for (var i=0, len=songs.length; i<len; i++){       
-            varSongs[i] = songs[i];
-            }
-            res.send([{songArtist: artist.artistName, songs: varSongs}]);
-        });
-    })
+    Artist.findById(req.params.id, function(err, artist) {
+        if(err) res.send(500, err.message);
+        if(artist != undefined){
+            var songs = Song.find({songArtist: artist._id}, function(err, songs) {
+                if(err) res.send(500, err.message);
+                var varSongs = [];
+                for (var i=0, len=songs.length; i<len; i++){
+                varSongs[i] = songs[i];
+                }
+                res.send([{songArtist: artist.artistName, songs: varSongs}]);
+            });
+        }else{
+            res.send(500, "Error.")
+        }
+
+    });
 };
 
 //TODO: Return song with name?

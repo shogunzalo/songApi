@@ -76,7 +76,6 @@ exports.addSong = function(req, res) {
         genre:    		req.body.genre,
         summary:  		req.body.summary,
         songMixs:       req.body.songMixs
-
     });
 
     song.save(function(err, song) {
@@ -97,7 +96,6 @@ exports.updateSong = function(req, res) {
         song.genre   	  = req.body.genre;
         song.summary      = req.body.summary;
         song.songMixs     = req.body.songMixs;
-
         song.save(function(err) {
             if(err) return res.status(500).send(err.message);
       res.status(200).jsonp(song);

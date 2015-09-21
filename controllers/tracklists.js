@@ -72,17 +72,28 @@ exports.addTracklist = function(req, res) {
     console.log(req.body);
 
     var tracklist 	= 	new Tracklist({
-        tracklistArtist:    req.body.tracklistArtist,
+        tracklistArtist:    [],
+        tracklistGenres:    req.body.tracklistGenres,
         tracklistName:   	req.body.tracklistName,
-        tracklistDate:  	  		    req.body.date,
-        tracklistTracks:   	  		req.body.tracks,
-        tracklistLinks:              req.body.links
-
+        tracklistDate:  	req.body.date,
+        tracklistTracks:   	req.body.tracks,
+        tracklistLinks:     req.body.tracklistLinks
     });
+
+    req.body.tracklistArtist.forEach(function(element){
+        tracklist.tracklistArtist.push(JSON.parse(element));
+    });
+
+
+    console.log(tracklist.tracklistArtist);
 
     tracklist.save(function(err, tracklist) {
         // if(err) return res.send(500, err.message);
-        if(err) return res.status(500).send(err.message);
+        if(err){
+            console.log(err.message);
+            return res.status(500).send(err.message);
+        }
+        console.log(tracklist);
         res.status(200).jsonp(tracklist);
     });
 };

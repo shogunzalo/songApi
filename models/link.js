@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
-var listSchema = new Schema({
+var linkSchema = new Schema({
     soundCloudLink:     { type: String },
     beatPortLink:     { type: String },
     facebookLink:     { type: String },
@@ -11,4 +11,4 @@ var listSchema = new Schema({
     mixcloudLink:      { type: String }
 });
 
-module.exports = mongoose.model('Link', listSchema);
+module.exports = mongoose.model('Link', linkSchema);

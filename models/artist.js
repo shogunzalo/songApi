@@ -7,7 +7,7 @@ var artistSchema = new Schema({
   artistThumbnail:  { data: Buffer, contentType: String },
   artistDesc:       { type: String },
   artistCountry:   	{ type: String },
-  artistLinks:   	{type : Schema.Types.ObjectId, ref : 'ArtistLink'}
+  artistLinks:   	{type : Schema.Types.ObjectId, ref : 'Link'}
 });
 
 module.exports = mongoose.model('Artist', artistSchema);
