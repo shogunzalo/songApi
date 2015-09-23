@@ -13,7 +13,7 @@ exports.findAllTracklists = function(req, res) {
 
         console.log('GET /tracklists')
         res.status(200).jsonp(tracklist);
-    });
+    }).populate('tracklistArtist tracklistGenres');
 };
 
 //GET - Return tracklists by artist
@@ -38,33 +38,48 @@ exports.findTracklistByName = function(req, res) {
         });
 };
 
-//exports.findSongByName = function(req, res) {
-//
-//    Song.find({songName: req.params.id})
-//        .lean()
-//        .populate({ path: 'songMixs songArtist' })
-//        .exec(function(err, docs) {
-//
-//            var options = {
-//                path: 'songMixs.nextSong',
-//                model: 'Song'
-//            };
-//
-//            if (err) return res.json(500);
-//            Song.populate(docs, options, function (err, projects) {
-//
-//                var options2 = {
-//                    path: 'songMixs.nextSong.songArtist',
-//                    model: 'Artist'
-//                };
-//
-//                Artist.populate(docs, options2, function (err, projects) {
-//                    res.json(projects);
-//                });
-//            });
-//        });
-//
-//};
+//PUT - Update a register already exists
+exports.updateTracklist = function(req, res) {
+    Tracklist.findById(req.params.id, function(err, tracklist) {
+        tracklist.tracklistArtist     = req.body.tracklistArtist;
+        tracklist.tracklistGenres     = req.body.tracklistGenres;
+        tracklist.tracklistName       = req.body.tracklistName;
+        tracklist.tracklistDate       = req.body.date;
+        tracklist.tracklistTracks     = req.body.recordLabel;
+        tracklist.tracklistLinks   	  = req.body.genre;
+
+        tracklist.save(function(err) {
+            if(err) return res.status(500).send(err.message);
+            res.status(200).jsonp(tracklist);
+        });
+    });
+};
+
+exports.addGenres = function(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
+    Tracklist.update({_id: req.params.id}, {$push: {"tracklistGenres": req.body.tracklistGenres}
+    }, function(err, tracklist) {
+        if(err){
+            console.log(err.message);
+            return res.status(500).send(err.message);
+        }
+        res.status(200).jsonp(tracklist);
+    });
+};
+
+exports.addArtists = function(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
+    Tracklist.update({_id: req.params.id}, {$push: {"tracklistArtist": req.body.tracklistArtist}
+    }, function(err, tracklist) {
+        if(err){
+            console.log(err.message);
+            return res.status(500).send(err.message);
+        }
+        res.status(200).jsonp(tracklist);
+    });
+};
 
 //POST - Insert a new Tracklist in the DB
 exports.addTracklist = function(req, res) {
@@ -72,20 +87,16 @@ exports.addTracklist = function(req, res) {
     console.log(req.body);
 
     var tracklist 	= 	new Tracklist({
-        tracklistArtist:    [],
-        tracklistGenres:    req.body.tracklistGenres,
         tracklistName:   	req.body.tracklistName,
         tracklistDate:  	req.body.date,
         tracklistTracks:   	req.body.tracks,
         tracklistLinks:     req.body.tracklistLinks
     });
 
-    req.body.tracklistArtist.forEach(function(element){
-        tracklist.tracklistArtist.push(JSON.parse(element));
-    });
-
-
-    console.log(tracklist.tracklistArtist);
+    //JSON.parse(req.body.tracklistArtist).forEach(function(element){
+    //    console.log(element);
+    //    tracklist.tracklistArtist.push(element);
+    //});
 
     tracklist.save(function(err, tracklist) {
         // if(err) return res.send(500, err.message);
@@ -106,17 +117,17 @@ exports.addTracklist = function(req, res) {
 //     });
 // };
 
-exports.findMixBySongName = function(req, res) {
-
-    Mix
-        .find({songOne: req.params.id})
-        .populate('songTwo')
-        .exec(function (err, mix) {
-            if (err) return handleError(err);
-            console.log('The creator is %s', mix.songTwo.songName);
-        })
-
-};
+//exports.findMixBySongName = function(req, res) {
+//
+//    Mix
+//        .find({songOne: req.params.id})
+//        .populate('songTwo')
+//        .exec(function (err, mix) {
+//            if (err) return handleError(err);
+//            console.log('The creator is %s', mix.songTwo.songName);
+//        })
+//
+//};
 
 
 

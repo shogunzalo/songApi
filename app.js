@@ -9,7 +9,7 @@ var flash    = require('connect-flash');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
+//var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
 app.all('/*', function(req, res, next) {
@@ -78,6 +78,10 @@ app.put('/addMix/:id', apiSong.addMixs);
 //Plan to use this one for the mix as posts
 app.put('/addMix/:id', apiMix.addMixs);
 app.put('/addRecommendations/:id', apiMix.addRecommendations);
+app.put('/addArtistToTracklist/:id', apiTracklist.addArtists);
+app.put('/addGenresToTracklist/:id', apiTracklist.addGenres);
+
+
 
 //GET
 app.get('/home', function(req,res){

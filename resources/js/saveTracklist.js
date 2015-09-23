@@ -6,7 +6,6 @@ var genresLookupUrl = baseUrl + 'genreByName/'
 var tracklistLookupUrl = baseUrl + 'tracklistByName/'
 var lastNumberTrack = 0;
 
-
 function readTracklist(){
 	lastNumberTrack = 0;
     $.getJSON("/js/test.json", function(json) {
@@ -37,7 +36,9 @@ function saveTracklist(json){
 
     var tracklistId;
     createTracklist(json, artistIds, function(result){tracklistId = result;});
-    //saveTracklistSongs(json, tracklistId);
+    saveTracklistSongs(json, tracklistId);
+    //Save songs to tracklist
+    return;
     //Include tracklist
     //If mix exists check if tracklist is already associated to it
     //postMix();
@@ -50,7 +51,12 @@ function saveTracklistSongs(tracklist){
     // for example if I have song1 and artist1 and artist2 share this song name
 
     tracklist.forEach(function(element, index, array){
-        checkIfArtistExists(element.songArtist[0]);
+        if(index == 0){return false;} //First element is a tracklist
+        checkIfArtistExists(element.artistName, function (result){
+            if(!result){
+                postArtist(element.artistName, null, function(){})
+            }
+        });
         saveSongIfDoesntExists(element);
         saveSongToTracklist(element);
         if(index >= 1){ //Don't mix the first song
@@ -81,22 +87,60 @@ function createTracklist(json, artistIds, cb){
         }
     });
 
-    if(json[0].tracklistLinks.length > 0 || json[0].tracklistLinks.length != undefined){
-        postLinks(json[0].tracklistLinks, function(result){linksId = result;});
-    }
+    var tracklist = {tracklistName: json[0].tracklistName[0], date: json[0].tracklistDate[0]};
 
     //Artist needs to be Id(s)
-    var tracklist = {tracklistArtist: JSON.stringify(artistIds), tracklistName: json[0].tracklistName[0], date: json[0].tracklistDate[0], tracklistGenres: JSON.stringify(genresIds), tracklistLinks: linksId};
-
     checkIfTracklistExists(tracklist, function(result){tracklistExists = result});
     if(!tracklistExists){
+        if(json[0].tracklistLinks.length > 0 || json[0].tracklistLinks.length != undefined){
+            postLinks(json[0].tracklistLinks, function(result){linksId = result;});
+        }
+        tracklist.tracklistLinks = linksId;
         postTracklist(tracklist, function(result){tracklistId = result});
+        genresIds.forEach(function(element){
+            putTracklistGenres(tracklistId, element);
+        });
+        artistIds.forEach(function(element){
+            putTracklistArtists(tracklistId, element);
+        });
     }else{
         tracklistId = tracklistExists;
     }
 
     return cb(tracklistId);
 
+}
+
+function putTracklistArtists(tracklistId, artistId){
+    var data = {tracklistArtist: artistId}
+    $.ajax({
+        url: 'http://localhost:3000/addArtistToTracklist/' + tracklistId,
+        type: 'put',
+        dataType: 'json',
+        data: data,
+        async: false,
+        success: function(data) {
+            //alert("Success");
+            console.log("Artist posted.");
+        }
+    });
+    return false;
+}
+
+function putTracklistGenres(tracklistId, genre){
+    var data = {tracklistGenres: genre}
+    $.ajax({
+        url: 'http://localhost:3000/addGenresToTracklist/' + tracklistId,
+        type: 'put',
+        dataType: 'json',
+        data: data,
+        async: false,
+        success: function(data) {
+            //alert("Success");
+            console.log("Genre posted.");
+        }
+    });
+    return false;
 }
 
 function checkIfTracklistExists(tracklist, cb){
@@ -109,7 +153,7 @@ function checkIfTracklistExists(tracklist, cb){
         if(data == undefined || data.length == 0){
             cb(false);
         }else{
-            cb(data._id);
+            cb(data[0]._id);
         }
     });
 }
