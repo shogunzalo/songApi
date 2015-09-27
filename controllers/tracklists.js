@@ -4,7 +4,28 @@
 //File: controllers/songs.js
 var mongoose = require('mongoose');
 var Tracklist = require('../models/tracklist.js');
+var Song = require('../models/song.js');
+var Artist = require('../models/artist.js');
 var Mix  = require('../models/mix.js');
+var sys = require('sys')
+var exec = require('child_process').exec;
+
+//POST
+exports.webCrawler = function(req, res){
+    exec("(rm /Users/gonzalo/Documents/ProgramFiles/Scrapy-0.24.1/djtest/djtest/tracklist.json; cd /Users/gonzalo/Documents/ProgramFiles/Scrapy-0.24.1/djtest/djtest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
+        //sys.print('stdout: ' + stdout);
+        //sys.print('stderr: ' + stderr);
+        exec("cat /Users/gonzalo/Documents/ProgramFiles/Scrapy-0.24.1/djtest/djtest/tracklist.json", function (error, stdout, stderr) {
+            if (error !== null) {
+                console.log('exec error: ' + error);
+            }
+            res.status(200).jsonp(stdout);
+        });
+        if (error !== null) {
+            console.log('exec error: ' + error);
+        }
+    });
+}
 
 //GET - Return all tracklists in the DB
 exports.findAllTracklists = function(req, res) {
@@ -13,14 +34,14 @@ exports.findAllTracklists = function(req, res) {
 
         console.log('GET /tracklists')
         res.status(200).jsonp(tracklist);
-    }).populate('tracklistArtist tracklistGenres');
+    }).populate('tracklistArtist tracklistGenres tracklistLinks tracklistTracks.track');
 };
 
 //GET - Return tracklists by artist
 exports.findTracklistByArtist = function(req, res) {
     Tracklist.find({tracklistArtist: req.params.id})
     //    .lean()
-        .populate('tracks')
+        .populate('tracklistArtist tracklistGenres tracklistLinks tracklistTracks.track')
         .exec(function(err, docs)
      {
             res.json(docs);
@@ -31,10 +52,26 @@ exports.findTracklistByArtist = function(req, res) {
 exports.findTracklistByName = function(req, res) {
     Tracklist.find({tracklistName: req.params.id})
         //    .lean()
-        .populate('tracks')
+        .populate('tracklistArtist tracklistGenres tracklistLinks tracklistTracks.track')
         .exec(function(err, docs)
         {
-            res.json(docs);
+            var options = {
+                path: 'tracklistTracks.track',
+                model: 'Song'
+            };
+
+            if (err) return res.json(500);
+            Song.populate(docs, options, function (err, projects) {
+
+                var options2 = {
+                    path: 'tracklistTracks.track.songArtist',
+                    model: 'Artist'
+                };
+
+                Artist.populate(docs, options2, function (err, projects) {
+                    res.json(projects);
+                });
+            });
         });
 };
 
@@ -45,13 +82,27 @@ exports.updateTracklist = function(req, res) {
         tracklist.tracklistGenres     = req.body.tracklistGenres;
         tracklist.tracklistName       = req.body.tracklistName;
         tracklist.tracklistDate       = req.body.date;
-        tracklist.tracklistTracks     = req.body.recordLabel;
+        tracklist.tracklistTracks.trackNumber     = req.body.trackNumber;
+        tracklist.tracklistTracks.track     = req.body.track;
         tracklist.tracklistLinks   	  = req.body.genre;
 
         tracklist.save(function(err) {
             if(err) return res.status(500).send(err.message);
             res.status(200).jsonp(tracklist);
         });
+    });
+};
+
+exports.addSongs = function(req, res) {
+    console.log(req.body);
+    console.log(req.params.id);
+    Tracklist.update({_id: req.params.id}, {$push: {"tracklistTracks": {"track": req.body.tracklistTracks, "trackNumber": req.body.trackNumber}}
+    }, function(err, tracklist) {
+        if(err){
+            console.log(err.message);
+            return res.status(500).send(err.message);
+        }
+        res.status(200).jsonp(tracklist);
     });
 };
 
@@ -89,7 +140,6 @@ exports.addTracklist = function(req, res) {
     var tracklist 	= 	new Tracklist({
         tracklistName:   	req.body.tracklistName,
         tracklistDate:  	req.body.date,
-        tracklistTracks:   	req.body.tracks,
         tracklistLinks:     req.body.tracklistLinks
     });
 

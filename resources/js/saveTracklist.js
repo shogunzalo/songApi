@@ -4,11 +4,10 @@ var songLookupUrl = baseUrl + 'songName/';
 var artistLookupUrl = baseUrl + 'artistName/';
 var genresLookupUrl = baseUrl + 'genreByName/'
 var tracklistLookupUrl = baseUrl + 'tracklistByName/'
-var lastNumberTrack = 0;
+var lastNumberTrack = 1;
 
 function readTracklist(){
-	lastNumberTrack = 0;
-    $.getJSON("/js/test.json", function(json) {
+    $.getJSON("/Users/gonzalo/Documents/ProgramFiles/Scrapy-0.24.1/djtest/djtest/tracklist.json", function(json) {
         console.log(json);
         saveTracklist(json);
         //saveSongs(json)
@@ -18,16 +17,16 @@ function readTracklist(){
 //---------------------
 
 function saveTracklist(json){
-
+    lastNumberTrack = 1;
     var artistIds = [];
 
     json[0].tracklistArtist.forEach(function(element, index, array){
         var artistExists;
-        checkIfArtistExists(element, function(result){artistExists = result});
+        checkIfArtistExists(element.artistName, function(result){artistExists = result});
         if(!artistExists){
             var linksId;
-            postLinks(element, function(result){linksId = result})
-            postArtist(element, linksId, function(result){artistIds.push(result._id);});
+            postLinks(element.artistLinks, function(result){linksId = result})
+            postArtist(element, linksId, function(result){artistIds.push(result);});
         }else{
             artistIds.push(artistExists);
         }
@@ -36,7 +35,12 @@ function saveTracklist(json){
 
     var tracklistId;
     createTracklist(json, artistIds, function(result){tracklistId = result;});
-    saveTracklistSongs(json, tracklistId);
+
+    if(tracklistId){
+        saveTracklistSongs(json, tracklistId);
+    }
+
+
     //Save songs to tracklist
     return;
     //Include tracklist
@@ -45,21 +49,59 @@ function saveTracklist(json){
 
 }
 
-function saveTracklistSongs(tracklist){
+function checkIfSongExistsInTracklist(){
+
+}
+
+function putSongToTracklist(song, tracklistId, songNumber){
+
+    var data = {tracklistTracks: song, trackNumber: songNumber};
+
+    $.ajax({
+        url: 'http://localhost:3000/addSongsToTracklist/' + tracklistId,
+        type: 'put',
+        dataType: 'json',
+        data: data,
+        async: false,
+        success: function(data) {
+            //alert("Success");
+            console.log("Song posted to tracklist.");
+        }
+    });
+    return false;
+}
+
+function saveTracklistSongs(tracklist, tracklistId){
 
     // TODO: Consider same song name for different artist,
     // for example if I have song1 and artist1 and artist2 share this song name
 
     tracklist.forEach(function(element, index, array){
         if(index == 0){return false;} //First element is a tracklist
+        var artistData;
+        var songExists;
+        var artistExists;
         checkIfArtistExists(element.artistName, function (result){
             if(!result){
-                postArtist(element.artistName, null, function(){})
+                postArtist(element.artistName, null, function(result){artistExists = result})
             }
         });
-        saveSongIfDoesntExists(element);
-        saveSongToTracklist(element);
-        if(index >= 1){ //Don't mix the first song
+        checkIfSongExists(element, function(result){
+            if(!result){
+                var songJson = {"songName": element.songName,"bpm":"","key":"","recordLabel":"","genre":"","summary":"","songArtist": artistExists};
+                postLinks(element.songLinks, function(result){
+                    if(result.length > 0){
+                        songJson.songLinks = result
+                    }
+                });
+                postSong(songJson, function(result){songExists = result})
+            }else{
+                songExists = result
+            }
+        });
+
+        putSongToTracklist(songExists, tracklistId, element.songNumber);
+        if(index >= 2){ //Don't mix the first song
             saveMix(array, index, lastNumberTrack);
         }
     });
@@ -104,7 +146,7 @@ function createTracklist(json, artistIds, cb){
             putTracklistArtists(tracklistId, element);
         });
     }else{
-        tracklistId = tracklistExists;
+        tracklistId = false;
     }
 
     return cb(tracklistId);
@@ -205,10 +247,6 @@ function postGenre(genreName, cb){
     return false;
 }
 
-function saveSongToTracklist(song){
-
-}
-
 //function saveSongs(tracklist){
 //    // TODO: Consider same song name for different artist,
 //    // for example if I have song1 and artist1 and artist2 share this song name
@@ -228,7 +266,7 @@ function checkIfArtistExists(artist, cb){
     //Ajax call
     //If null/empty or doesnt exists return false
     return $.ajax({
-        url: artistLookupUrl + artist.artistName,
+        url: artistLookupUrl + artist,
         async: false
     }).then(function(data){
         if(data == undefined || data.length == 0){
@@ -283,10 +321,10 @@ function postArtist(artist, linksId, cb) {
 
     var songArtist;
 
-    if(linksId.length > 0){
+    if(linksId != undefined && linksId.length > 0){
         songArtist = {artistName: artist.artistName, artistLinks: linksId};
     }else {
-        songArtist = {artistName: artist.artistName};
+        songArtist = {artistName: artist};
     }
 
 
@@ -297,7 +335,8 @@ function postArtist(artist, linksId, cb) {
         data: songArtist,
         async: false,
         success: function(data) {
-            cb(data);
+            console.log("Artist posted: " + data.artistName);
+            cb(data._id);
         }
     });
     return false;
@@ -309,8 +348,16 @@ function mixExists(tracklist, index, cb){
 	//Check for tracklist[index - 1] and next Song as tracklist[index]
 	//return true if exist or false if doesn't
     var count = 0;
+    var previous;
 
-	return $.when(searchSong(tracklist[index - 1]), searchSong(tracklist[index])).done(function(song1, song2){
+    for(var i = index-1; i >= 0; i--){
+        if(tracklist[i].songNumber != 'w/'){
+            previous = i;
+            break;
+        }
+    }
+
+	return $.when(searchSong(tracklist[previous]), searchSong(tracklist[index])).done(function(song1, song2){
     	if(song1.length > 0 && song1[2].responseJSON[0] != undefined && song1[2].responseJSON[0].songMixs != undefined){
             song1[2].responseJSON[0].songMixs.forEach(function(element, index, array){
                 if(element.nextSong._id == song2[2].responseJSON[0]._id){
@@ -322,12 +369,13 @@ function mixExists(tracklist, index, cb){
             }else{
                 cb(false);
             }
+        }else{
+            cb(false);
         }
-
 	});
 }
 
-function saveSongIfDoesntExists(song){
+function checkIfSongExists(song, cb){
 	//Ajax call
 	//If null/empty or doesnt exists return false
 	$.ajax({
@@ -336,9 +384,9 @@ function saveSongIfDoesntExists(song){
 	}).then(function(data){
         if(data == undefined || data.length == 0){
             //console.log("Posting song: " + song.songName);
-            postSong(song);
+            cb(false);
         }else{
-            return;
+            cb(data[0]._id);
         }
     });
 }
@@ -373,7 +421,7 @@ function saveMix(tracklist, index){
 //Insert mix
 
 function postMix(tracklist, index, lastNumberTrack) {
-    var mixData = {songName: tracklist[lastNumberTrack], nextSong: tracklist[index].songName[0]};
+    var mixData = {songName: tracklist[lastNumberTrack], nextSong: tracklist[index].songName};
 
     $.ajax({
         url : "http://localhost:3000/songName/" + mixData.nextSong,
@@ -406,7 +454,7 @@ function insertMix(mixData){
 
 function searchSongId(songName, mixId){
     $.ajax({
-        url : "http://localhost:3000/songName/" + songName.songName[0],
+        url : "http://localhost:3000/songName/" + songName.songName,
         async: false
     }).then(function(data) {
         insertMixIntoSong(data[0]._id, mixId);
@@ -432,20 +480,20 @@ function insertMixIntoSong(songId, mixId){
 
 //Submiting new song
 
-function postSong(songData){
+//function postSong(songData){
+//
+//    var songJson = {"songName": songData.songName[0],"bpm":"","key":"","recordLabel":"","genre":"","summary":"","songArtist":""};
+//
+//    $.ajax({
+//        url : "http://localhost:3000/artistName/" + songData.songArtist[0],
+//        async: false
+//    }).then(function(data) {
+//        songJson.songArtist = data[0]._id;
+//        insertSong(songJson);
+//    });
+//}
 
-    var songJson = {"songName": songData.songName[0],"bpm":"","key":"","recordLabel":"","genre":"","summary":"","songArtist":""};
-
-    $.ajax({
-        url : "http://localhost:3000/artistName/" + songData.songArtist[0],
-        async: false
-    }).then(function(data) {
-        songJson.songArtist = data[0]._id;
-        insertSong(songJson);
-    });
-}
-
-function insertSong(songData){
+function postSong(songData, cb){
     $.ajax({
         url: 'http://localhost:3000/song/',
         type: 'post',
@@ -453,6 +501,7 @@ function insertSong(songData){
         data: songData,
         async: false,
         success: function(data) {
+            cb(data._id);
             console.log("Song posted: " + songData.songName);
         }
     });

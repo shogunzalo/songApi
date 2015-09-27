@@ -72,6 +72,7 @@ app.post('/mix', apiMix.addMix);
 app.post('/tracklist', apiTracklist.addTracklist);
 app.post('/links', apiLinks.addLinks);
 app.post('/genre', apiGenres.addGenres);
+app.post('/webCrawler', apiTracklist.webCrawler);
 
 //PUT
 app.put('/addMix/:id', apiSong.addMixs);
@@ -80,6 +81,7 @@ app.put('/addMix/:id', apiMix.addMixs);
 app.put('/addRecommendations/:id', apiMix.addRecommendations);
 app.put('/addArtistToTracklist/:id', apiTracklist.addArtists);
 app.put('/addGenresToTracklist/:id', apiTracklist.addGenres);
+app.put('/addSongsToTracklist/:id', apiTracklist.addSongs);
 
 
 

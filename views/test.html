@@ -5,5 +5,32 @@
     <script type=text/javascript src="/js/saveTracklist.js"></script>
 </head>
 <body>
-TEST PAGE
+Web crawler:
+
+Insert the link you want to crawl:
+<input id="testInput"></body>
+<button id="testBtn" type="button" onclick="testFcn(testInput.value)" >Hola</button>
+<div id="response"></div>
+
+<script>
+    function testFcn(params){
+        if(params.indexOf("http://www.1001tracklists.com/tracklist/") == -1){
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/webCrawler",
+            data: { url: params},
+            beforeSend: function() {
+                $('#response').html("<img src='/images/loading.gif' />");
+            },
+            success: function(json) {
+                saveTracklist(JSON.parse(json));
+            }
+        }).done(function( o ) {
+            // do something
+        });
+    }
+</script>
 </body>

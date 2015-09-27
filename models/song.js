@@ -10,11 +10,12 @@ var songSchema = new Schema({
   bpm:            { type: String },
   //Need fixed keys
   key:            { type: String },
-  recordLabel:    { type: String },
+  songPublisher:    { type: String },
   //Need predefined genres
   genre:          { type: String },
   summary:        { type: String },
-  songMixs:       [{type : Schema.Types.ObjectId, ref : 'Mix'}]
+  songMixs:       [{type : Schema.Types.ObjectId, ref : 'Mix'}],
+  songLinks:      {type : Schema.Types.ObjectId, ref : 'Link'}
 });
 
 module.exports = mongoose.model('Song', songSchema);

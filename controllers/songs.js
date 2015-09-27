@@ -10,7 +10,7 @@ exports.findAllSongs = function(req, res) {
 
     console.log('GET /songs')
         res.status(200).jsonp(songs);
-    });
+    }).populate({ path: 'songMixs songArtist songLinks' });
 };
 
 //GET TODO
@@ -27,7 +27,7 @@ exports.findSongByName = function(req, res) {
 
 Song.find({songName: req.params.id})
   .lean()
-  .populate({ path: 'songMixs songArtist' })
+  .populate({ path: 'songMixs songArtist songLinks' })
   .exec(function(err, docs) {
 
     var options = {
@@ -72,10 +72,11 @@ exports.addSong = function(req, res) {
         songArtist:   	req.body.songArtist,
         bpm:  	  		req.body.bpm,
         key:   	  		req.body.key,
-        recordLabel:    req.body.recordLabel,
+        songPublisher:    req.body.songPublisher,
         genre:    		req.body.genre,
         summary:  		req.body.summary,
-        songMixs:       req.body.songMixs
+        songMixs:       req.body.songMixs,
+        songLinks:      req.body.songLinks
     });
 
     song.save(function(err, song) {
@@ -92,10 +93,11 @@ exports.updateSong = function(req, res) {
         song.songArtist   = req.body.songArtist;
         song.bpm          = req.body.bpm;
         song.key          = req.body.key;
-        song.recordLabel  = req.body.recordLabel;
+        song.songPublisher  = req.body.songPublisher;
         song.genre   	  = req.body.genre;
         song.summary      = req.body.summary;
         song.songMixs     = req.body.songMixs;
+        song.songLinks    = req.body.songLinks;
         song.save(function(err) {
             if(err) return res.status(500).send(err.message);
       res.status(200).jsonp(song);
