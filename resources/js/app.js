@@ -1,5 +1,7 @@
 function searchSong(inputText) {
 
+    inputText = inputText.replace(/\?/g, 'kr4mn01ts3uq');
+
 	$.ajax({
 		url : "http://localhost:3000/songName/" + inputText
 	}).then(

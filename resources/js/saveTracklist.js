@@ -7,8 +7,7 @@ var tracklistLookupUrl = baseUrl + 'tracklistByName/'
 var lastNumberTrack = 1;
 
 function readTracklist(){
-    $.getJSON("/Users/gonzalo/Documents/ProgramFiles/Scrapy-0.24.1/djtest/djtest/tracklist.json", function(json) {
-        console.log(json);
+    $.getJSON("/js/test.json", function(json) {
         saveTracklist(json);
         //saveSongs(json)
     });
@@ -18,6 +17,7 @@ function readTracklist(){
 
 function saveTracklist(json){
     lastNumberTrack = 1;
+    console.log(json);
     var artistIds = [];
 
     json[0].tracklistArtist.forEach(function(element, index, array){
@@ -82,13 +82,15 @@ function saveTracklistSongs(tracklist, tracklistId){
         var songExists;
         var artistExists;
         checkIfArtistExists(element.artistName, function (result){
+            artistExists = result;
             if(!result){
                 postArtist(element.artistName, null, function(result){artistExists = result})
             }
         });
+        element.songName = element.songName.replace(/\//g, '-');
         checkIfSongExists(element, function(result){
             if(!result){
-                var songJson = {"songName": element.songName,"bpm":"","key":"","recordLabel":"","genre":"","summary":"","songArtist": artistExists};
+                var songJson = {"songName": element.songName,"bpm":"","key":"","songPublisher": element.songPublisher,"genre":"","summary":"","songArtist": artistExists};
                 postLinks(element.songLinks, function(result){
                     if(result.length > 0){
                         songJson.songLinks = result
@@ -388,12 +390,17 @@ function checkIfSongExists(song, cb){
         }else{
             cb(data[0]._id);
         }
+    }, function() {
+        cb(false);
+        alert( "$.get failed!" );
     });
 }
 
 function searchSong(song){
     //Ajax call
     //If null/empty or doesnt exists return false
+    song.songName = song.songName.replace(/\?/g, 'kr4mn01ts3uq');
+
     return $.ajax({
         url: songLookupUrl + song.songName,
         async: false

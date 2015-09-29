@@ -25,6 +25,10 @@ exports.findAllSongs = function(req, res) {
 
 exports.findSongByName = function(req, res) {
 
+console.log("Request: "+req.params.id);
+req.params.id = req.params.id.replace(/kr4mn01ts3uq/g, '?');
+console.log("Request: "+req.params.id);
+
 Song.find({songName: req.params.id})
   .lean()
   .populate({ path: 'songMixs songArtist songLinks' })

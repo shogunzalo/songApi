@@ -1,16 +1,953 @@
-[{"tracklistDate": ["2015-07-11"], "tracklistNumTracks": ["16"], "tracklistGenres": ["Electro House", "Progressive House"], "tracklistArtist": [{"artistName": "Martin Garrix", "artistLinks": ["http://www.martingarrix.com", "https://www.facebook.com/martingarrix", "https://www.facebook.com/martingarrixofficial", "https://soundcloud.com/martingarrix", "https://twitter.com/martingarrix", "https://www.youtube.com/channel/UC5H_KXkPbEsGs0tFt8R35mA"]}, {"artistName": "Ultra Music Festival Europe", "artistLinks": ["/source/3112_umf/index.html"]}], "tracklistLinks": ["http://www.youtube.com/watch?v=WurX-xZztP4", "http://www.youtube.com/watch?v=Sze_x98qKsg", "https://soundcloud.com/clubbinghouse_livesets/martin-garrix-live-ultra-music-festival-croatia-2015", "https://soundcloud.com/traumzauberwald-festival/martin-garrix-live-ultra-europe-2015-split-croatia-live-set", "https://www.mixcloud.com/Traumzauberwald/martin-garrix-live-ultra-europe-2015-split-croatia-live-set/", "https://www.mixcloud.com/EDMliveset/martin-garrix-live-ultra-europe-2015-split-croatia/"], "tracklistName": ["Martin Garrix @ Main Stage, Ultra Music Festival Europe, Croatia 2015-07-11"]},
-  {"artistName": "Martin Garrix vs. Matisse & Sadko vs. Disclosure", "songPublisher": "", "songName": "Dragon vs. Latch (Martin Garrix Mashup)", "songNumber": "01", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/213814838&auto_play=true&show_artwork=true&color=D6DCFE"]},
-  {"artistName": "Chardy & Kronic", "songPublisher": "HUSSLE RECORDINGS", "songName": "S.W.A.T. Team ( Everybody Fucking *Beep* Jump Acappella)", "songNumber": "w/", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/87512713&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/pKoyeB1V8Ow?rel=0&start=79&autoplay=1"]},
-  {"artistName": "Martin Garrix & Firebeatz vs. Swedish House Mafia & Knife Party vs. Zedd & Lucky Date vs. Deorro & J-Trick & Hardwell vs. Bastille & Audien", "songPublisher": "", "songName": "Helicopter vs. Antidote vs. Fall Into The Sky vs. Rambo vs. Pompeii (Martin Garrix Mashup)", "songNumber": "02", "songLinks": []},
-  {"artistName": "David Guetta & Showtek & Vassy vs. Afrojack & Martin Garrix", "songPublisher": "", "songName": "BAD vs. Turn Up The Speakers (Afrojack Tomorrowland Brasil Mashup)", "songNumber": "03", "songLinks": []},
-  {"artistName": "Quintino", "songPublisher": "SPINNIN' RECORDS", "songName": "Devotion", "songNumber": "04", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/219765826&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/t-s1yehaZus?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=6962855&type=track"]},
-  {"artistName": "Firebeatz vs. Alvita", "songPublisher": "", "songName": "Arsonist vs. Empire (Martin Garrix Mashup)", "songNumber": "05", "songLinks": []},
-  {"artistName": "Avicii", "songPublisher": "PRMD RECORDS", "songName": "Waiting For Love", "songNumber": "06", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/198182346&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/-ncIVUXZla8?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=6714888&type=track"]},
-  {"artistName": "Martin Garrix vs. Matisse & Sadko", "songPublisher": "SPINNIN' RECORDS", "songName": "Break Through The Silence", "songNumber": "08", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/214695775&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/k0rwzGdWb68?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=6849118&type=track"]},
-  {"artistName": "Florian Picasso", "songPublisher": "PROTOCOL RECORDINGS", "songName": "Origami", "songNumber": "09", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/213976135&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/6n-CY9mMDHg?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=6856040&type=track"]},
-  {"artistName": "Martin Garrix & David Guetta", "songPublisher": "SPINNIN' RECORDS", "songName": "Blue Flames", "songNumber": "10", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/199827847&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/SdmpBeLrzys?rel=0&start=3107&autoplay=1"]},
-  {"artistName": "Martin Garrix & Justin Mylo", "songPublisher": "", "songName": "Bouncy Bob", "songNumber": "11", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/221789195&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/Nsmv8QKjhh8?rel=0&start=0&autoplay=1"]},
-  {"artistName": "Martin Garrix vs. Dimitri Vegas & Like Mike", "songPublisher": "SPINNIN' RECORDS", "songName": "Tremor (Sensation 2014 Anthem)", "songNumber": "12", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/145735962&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/YERRtNngVYE?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=5318186&type=track"]},
-  {"artistName": "Alesso", "songPublisher": "REFUNE RECORDS/DEF JAM RECORDINGS", "songName": "Heroes (Hard Rock Sofa & Skidka Remix)", "songNumber": "13", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/179466736&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/abQP8HAVovw?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=6078971&type=track"]},
-  {"artistName": "Alesso", "songPublisher": "REFUNE RECORDS/DEF JAM RECORDINGS", "songName": "Heroes", "songNumber": "w/", "songLinks": ["https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/164138555&auto_play=true&show_artwork=true&color=D6DCFE", "https://www.youtube.com/embed/FBUJiUCWiz8?rel=0&start=0&autoplay=1", "http://embed.beatport.com/player/?id=6078966&type=track"]},
-  {"artistName": "Martin Garrix & Jake Liedo vs. Galantis", "songPublisher": "", "songName": "Forbidden Voices vs. Runaway (Martin Garrix Ultra Mashup)", "songNumber": "14", "songLinks": []}]
+[
+  {
+    "tracklistDate":[
+      "2015-09-20"
+    ],
+    "tracklistNumTracks":[
+      "91"
+    ],
+    "tracklistGenres":[
+      "Dubstep",
+      "Hip Hop",
+      "Trap"
+    ],
+    "tracklistArtist":[
+      {
+        "artistName":"Skrillex",
+        "artistLinks":[
+          "https://www.facebook.com/skrillex",
+          "https://soundcloud.com/skrillex",
+          "https://soundcloud.com/skrillexunreleased",
+          "https://twitter.com/skrillex",
+          "http://www.residentadvisor.net/dj/skrillex/dates",
+          "https://www.youtube.com/channel/UCj_XesZeIbccxGf4rG08_3Q",
+          "https://www.youtube.com/channel/UC_TVqp_SyG6j5hG-xVRy95A"
+        ]
+      },
+      {
+        "artistName":"Ultra Music Festival Japan",
+        "artistLinks":[
+          "/source/3112_umf/index.html",
+          "http://www.ultrajapan.com"
+        ]
+      }
+    ],
+    "tracklistLinks":[
+      "http://www.youtube.com/watch?v=Y7f3IFxJfrI",
+      "https://soundcloud.com/clubbinghouse_livesets/skrillex-live-ultra-japan-2015",
+      "https://soundcloud.com/ibizaclosing-7/skrillex-live-at-ultra-music-festival-2015-japan-main-stage-20-sep-2015",
+      "https://soundcloud.com/st3veoh/skrillex-ultra-japan-2015",
+      "https://soundcloud.com/edm_liveset/skrillex-live-ultra-music",
+      "https://soundcloud.com/soundlr/skrillex-ultrajapan2015",
+      "https://soundcloud.com/x1xxtracklist/skrillex-live-ultra-music-festival-korea-2015",
+      "http://www82.zippyshare.com/v/8w2l425s/file.html",
+      "https://www.mixcloud.com/edmninja/skrillex-live-at-ultra-music-festival-2015-japan-main-stage-20-sep-2015/",
+      "https://www.mixcloud.com/Traumzauberwald/skrillex-live-ultra-music-festival-japan-2015-umf-2015-full-set/",
+      "https://www.mixcloud.com/EatDanceRaveRepeat/skrillex-ultra-japan-2015/",
+      "https://www.mixcloud.com/EDMliveset/skrillex-live-ultra-music-festival-japan-ultra-japan-20092015/"
+    ],
+    "tracklistName":[
+      "Skrillex @ Ultra Music Festival Japan 2015-09-20"
+    ]
+  },
+  {
+    "artistName":"Jack U",
+    "songPublisher":"ATLANTIC RECORDS",
+    "songName":"Take You There",
+    "songNumber":"01",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/165919379&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/C9slkeFXogU?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5852710&type=track"
+    ]
+  },
+  {
+    "artistName":"50 Cent",
+    "songPublisher":"SHADY RECORDS",
+    "songName":"In Da Club ( Acappella)",
+    "songNumber":"w/",
+    "songLinks":[
+
+    ]
+  },
+  {
+    "artistName":"Skrillex & Damian Marley",
+    "songPublisher":"BIG BEAT RECORDS/OWSLA",
+    "songName":"Make It Bun Dem ( Acappella)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45710769&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Megalodon & Zeds Dead",
+    "songPublisher":"FREE TRACK",
+    "songName":"Wit Me Dub",
+    "songNumber":"02",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/211058201&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"French Montana",
+    "songPublisher":"INTERSCOPE RECORDS",
+    "songName":"Pop That ( Acappella)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/49462602&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/X98HX5nbsCI?rel=0&start=1&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Avicii",
+    "songPublisher":"LE7ELS",
+    "songName":"Levels (Skrillex Remix)",
+    "songNumber":"03",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/31204641&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/MITA4FhVjDc?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=6163467&type=track"
+    ]
+  },
+  {
+    "artistName":"Zomboy",
+    "songPublisher":"NEVER SAY DIE RECORDS",
+    "songName":"Terror Squad (Bro Safari & Remedy Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/206064312&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/uKwMbRgi7Cs?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=6591969&type=track"
+    ]
+  },
+  {
+    "artistName":"Jack U",
+    "songPublisher":"ATLANTIC RECORDS",
+    "songName":"Where Are U Now (Marshmello VIP Remix)",
+    "songNumber":"04",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/224115822&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/wwaG7WBQlxs?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Mr. Polska & Boaz Van De Beatz",
+    "songPublisher":"MAD DECENT",
+    "songName":"Guappa ( VIP)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/149985445&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/mltQRNo_pEQ?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"MAU5TRAP RECORDS",
+    "songName":"Scary Monsters And Nice Sprites",
+    "songNumber":"05",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/6676653&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/WSeNSzJ2-Jw?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"All Is Fair In Love And Brostep",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/135336977&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/6JYIGclVQdw?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Kendrick Lamar",
+    "songPublisher":"AFTERMATH ENTERTAINMENT",
+    "songName":"M.A.A.D City",
+    "songNumber":"06",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/64065414&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/w1kGMxHWbFE?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Yo Majesty",
+    "songPublisher":"FREE TRACK",
+    "songName":"Club Action (Smookie Illson Bootleg)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/76722811&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/V2VmcuOEqEg?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"YOGI",
+    "songPublisher":"OWSLA",
+    "songName":"Burial (Skrillex & TrollPhace Remix / G-Buck Edit)",
+    "songNumber":"07",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/200812565&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"ASAP Ferg",
+    "songPublisher":"A$AP WORLDWIDE",
+    "songName":"Work (Remix)",
+    "songNumber":"08",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/109590532&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/jkHI1hGvWRY?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Jack U",
+    "songPublisher":"ATLANTIC RECORDS",
+    "songName":"Febreze",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/193270670&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/9llYgSlnti8?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Zombie Nation",
+    "songPublisher":"EPM MUSIC",
+    "songName":"Kernkraft 400",
+    "songNumber":"09",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/8661375&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/S-dbdjbflqg?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex & The Doors",
+    "songPublisher":"ATLANTIC RECORDS",
+    "songName":"Breakin' A Sweat (It's Alright)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45719018&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"Right In",
+    "songNumber":"10",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45719015&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Calvin Harris",
+    "songPublisher":"COLUMBIA RECORDS",
+    "songName":"Summer (Diplo & Grandtheft Remix)",
+    "songNumber":"11",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/154871207&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/MLNtvVdTiXk?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5529323&type=track"
+    ]
+  },
+  {
+    "artistName":"Jay-Z",
+    "songPublisher":"ROC-A-FELLA",
+    "songName":"Tom Ford",
+    "songNumber":"12",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/100831942&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/IkgekVh7oKI?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Fetty Wap vs. Cesqeaux",
+    "songPublisher":"",
+    "songName":"Trap Queen vs. Wylin (Benzi Edit)",
+    "songNumber":"13",
+    "songLinks":[
+
+    ]
+  },
+  {
+    "artistName":"Kohh",
+    "songPublisher":"",
+    "songName":"\u5468\u308a\u5168\u90e8\u304b\u3099\u3044\u3044",
+    "songNumber":"w/",
+    "songLinks":[
+
+    ]
+  },
+  {
+    "artistName":"Congorock",
+    "songPublisher":"FOOL'S GOLD RECORDS",
+    "songName":"Babylon (Cesqeaux Trap Reload)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/126894270&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/N-SICdjNGOI?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Ease My Mind",
+    "songNumber":"14",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/140048515&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/hwsXo6fsmso?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Eptic",
+    "songPublisher":"NEVER SAY DIE RECORDS",
+    "songName":"The End (Carnage & Breaux Festival Trap Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/198871833&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/yIlL68RUjEg?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Beyonce & Jack U vs. Flosstradamus & GTA",
+    "songPublisher":"",
+    "songName":"7 11 vs. Prison Riot (Skrillex Mashup)",
+    "songNumber":"15",
+    "songLinks":[
+
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"First Of The Year (Equinox)",
+    "songNumber":"16",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/21792829&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/2cXDgFwE13g?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Valentino Khan",
+    "songPublisher":"OWSLA",
+    "songName":"Make Some Noise",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/157907160&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/Q99T8yiugK8?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Trollphace & Sub Antix",
+    "songPublisher":"NEVER SAY DIE RECORDS",
+    "songName":"All Your Swags Borrowed",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/187941242&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"A$AP Rocky ft. Skrillex & Birdy Nam Nam",
+    "songPublisher":"RCA RECORDS",
+    "songName":"Wild For The Night",
+    "songNumber":"17",
+    "songLinks":[
+      "https://www.youtube.com/embed/1eWdbMBYlH4?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5743210&type=track"
+    ]
+  },
+  {
+    "artistName":"Damian Marley",
+    "songPublisher":"UNIVERSAL MUSIC GROUP",
+    "songName":"Welcome To Jamrock",
+    "songNumber":"18",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/9631322&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/_GZlJGERbvE?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex & Damian Marley",
+    "songPublisher":"BIG BEAT RECORDS/OWSLA",
+    "songName":"Make It Bun Dem",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://www.youtube.com/embed/PR_u9rvFKzE?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"JuJu & Megalodon",
+    "songPublisher":"STYX RECORDINGS",
+    "songName":"Eine Fette Party",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/133608883&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"GTA",
+    "songPublisher":"FREE TRACK/MAD DECENT",
+    "songName":"Booty Bounce (GTA HYPRR MIX)",
+    "songNumber":"19",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/196685130&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Diplo & Angger Dimas",
+    "songPublisher":"MAD DECENT",
+    "songName":"Biggie Bounce (G-Buck Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/207703918&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/B8g7EqGOBpE?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Nero",
+    "songPublisher":"MTA RECORDS",
+    "songName":"Promises (Skrillex & Nero Remix)",
+    "songNumber":"20",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/24714965&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/VZMfhtKa-wo?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Fire Away",
+    "songNumber":"21",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/140048509&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/Aa2RSFYcoko?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"GTA & Diplo",
+    "songPublisher":"MAD DECENT/FREE TRACK",
+    "songName":"Boy Oh Boy",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/83183298&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/EUD39sJUue8?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Congorock",
+    "songPublisher":"FOOL'S GOLD RECORDS",
+    "songName":"Babylon (4B Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/199571957&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/w-pr_fVq96g?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Yeah Yeah Yeahs",
+    "songPublisher":"FREE TRACK/FOOL'S GOLD RECORDS",
+    "songName":"Heads Will Roll (Kid Kamillion 2015 Re-Heat)",
+    "songNumber":"22",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/194211526&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/lryb-acbQoc?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Major Lazer",
+    "songPublisher":"MAD DECENT",
+    "songName":"Roll The Bass",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/197212565&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/E5kJDWQSBUk?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Ragga Bomb (Skrillex & Zomboy Remix)",
+    "songNumber":"23",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/180111842&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/V5qT8EgSW7w?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5966930&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex & Diplo",
+    "songPublisher":"OWSLA/MAD DECENT",
+    "songName":"Beats Knockin ( VIP)",
+    "songNumber":"w/",
+    "songLinks":[
+
+    ]
+  },
+  {
+    "artistName":"Skrillex & Kill The Noise",
+    "songPublisher":"OWSLA/BIG BEAT RECORDS",
+    "songName":"Recess",
+    "songNumber":"24",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/140048582&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/R8i6VZ1vIY8?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"JumoDaddy",
+    "songPublisher":"PLAY ME RECORDS",
+    "songName":"Black Horse",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/150422962&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/Ua3Iui-FA0c?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Sum 41",
+    "songPublisher":"THE ISLAND DEF JAM MUSIC GROUP",
+    "songName":"Fat Lip",
+    "songNumber":"25",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/197244221&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/CMX2lPum_pg?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"DJ Snake",
+    "songPublisher":"COLUMBIA RECORDS",
+    "songName":"Turn Down For What?!",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/125529024&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/HMUDVMiITOU?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5035524&type=track"
+    ]
+  },
+  {
+    "artistName":"Nas",
+    "songPublisher":"COLUMBIA RECORDS",
+    "songName":"Made You Look (Aazar Edit)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/173517355&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Diplo",
+    "songPublisher":"MAD DECENT",
+    "songName":"Express Yourself",
+    "songNumber":"26",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/36733770&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/BKaL7WL-onI?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=3564169&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Bangarang",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45719017&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/YJVmu6yttiw?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=3194648&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Bangarang ( VIP)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45719017&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/kszjl6HMNwU?rel=0&start=60&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Dillon Francis & DJ Snake",
+    "songPublisher":"MAD DECENT",
+    "songName":"Get Low (The Rebirth In Paris)",
+    "songNumber":"27",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/168270377&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/o3p6UpEiMH8?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"Stranger",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/140048574&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/6t7wQ2BLBUg?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5264039&type=track"
+    ]
+  },
+  {
+    "artistName":"Martin Garrix",
+    "songPublisher":"SPINNIN' RECORDS",
+    "songName":"Animals",
+    "songNumber":"28",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/98081145&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/DuFUtL8zUAk?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=4459187&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"SELF RELEASED",
+    "songName":"My Name Is Skrillex ( Acappella)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/112342457&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/QtNJ_OOOJQQ?rel=0&start=152&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"GTA",
+    "songPublisher":"FLY EYE RECORDS",
+    "songName":"The Crowd",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/88153176&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/-dR72KzUP1w?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=4755932&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"All I Ask Of You",
+    "songNumber":"29",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/21792169&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/PzEgrNigZdw?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Knife Party",
+    "songPublisher":"EARSTORM",
+    "songName":"Internet Friends",
+    "songNumber":"30",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/30081783&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/ufDIdRyMklw?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=4028963&type=track"
+    ]
+  },
+  {
+    "artistName":"Wiwek & Jeremia Jones",
+    "songPublisher":"BARONG FAMILY",
+    "songName":"Balderdash",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/171174537&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Skrillex & Wolfgang Gartner",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"The Devil's Den ( VIP)",
+    "songNumber":"31",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/185633880&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/SXMTV7AdO4o?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Daft Punk",
+    "songPublisher":"VIRGIN RECORDS",
+    "songName":"Harder Better Faster Stronger",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/150254861&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/gAjR4_CbPpQ?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Fetty Wap",
+    "songPublisher":"300 ENTERTAINMENT",
+    "songName":"My Way",
+    "songNumber":"32",
+    "songLinks":[
+      "https://www.youtube.com/embed/vUdl96yqioc?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Knife Party",
+    "songPublisher":"EARSTORM",
+    "songName":"Internet Friends",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/30081783&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/ufDIdRyMklw?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=4028963&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex & Diplo",
+    "songPublisher":"",
+    "songName":"Jungle Bae (Brian Dawe & Deville Bootleg)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/210216655&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"MAU5TRAP RECORDS",
+    "songName":"Rock 'n Roll (Will Take You To The Mountain) ( VIP)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/21792165&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/IaOgpD9e6oo?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Moody Good",
+    "songPublisher":"MTA RECORDS",
+    "songName":"Hotplate",
+    "songNumber":"33",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/139911315&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/q0ez5k8l85U?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS/OWSLA",
+    "songName":"Summit",
+    "songNumber":"34",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45719022&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/-e_3Cg9GZFU?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Utada Hikaru",
+    "songPublisher":"",
+    "songName":"Passion",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://www.youtube.com/embed/kWoJLdXJt0E?rel=0&start=32&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Rihanna & Flosstradamus vs. Eptic & Breaux",
+    "songPublisher":"",
+    "songName":"Bitch Better Have My Money vs. The End (GENE-E-OUS 150 Bootleg Mashup)",
+    "songNumber":"35",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/210252245&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"C&C Music Factory",
+    "songPublisher":"SONY BMG",
+    "songName":"Gonna Make You Sweat (Everybody Dance Now)",
+    "songNumber":"36",
+    "songLinks":[
+      "https://www.youtube.com/embed/LaTGrV58wec?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Justice vs. Simian",
+    "songPublisher":"ED BANGER RECORDS",
+    "songName":"We Are Your Friends ( Acappella)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/223754912&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/ObyH_d4omQ0?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=627101&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"MAU5TRAP RECORDS",
+    "songName":"Scary Monsters And Nice Sprites ( Acappella)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://www.youtube.com/embed/OYiIgbFaJvU?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Virtual Riot",
+    "songPublisher":"DISCIPLE RECORDINGS",
+    "songName":"Warm Ups",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/189968316&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Ragga Twins",
+    "songPublisher":"OWSLA",
+    "songName":"Badman (Skrillex Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/196359027&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/zOwt3q116Iw?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Snails & Antiserum",
+    "songPublisher":"OWSLA",
+    "songName":"Wild",
+    "songNumber":"37",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/150438541&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/OITf_uiOqkc?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Zomboy & MUST DIE!",
+    "songPublisher":"NEVER SAY DIE RECORDS",
+    "songName":"Survivors",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/146875541&auto_play=true&show_artwork=true&color=D6DCFE",
+      "http://embed.beatport.com/player/?id=5483905&type=track"
+    ]
+  },
+  {
+    "artistName":"Eurythmics",
+    "songPublisher":"RCA RECORDS",
+    "songName":"Sweet Dreams (Are Made of This)",
+    "songNumber":"38",
+    "songLinks":[
+      "https://www.youtube.com/embed/qeMFqkcPYcg?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"DJ Khaled",
+    "songPublisher":"E1 MUSIC",
+    "songName":"All I Do Is Win",
+    "songNumber":"39",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/46466915&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/pC06nkNsAQ8?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Dirty Vibe",
+    "songNumber":"40",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/140048544&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/m7ot7fnFyuk?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5264044&type=track"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"OWSLA",
+    "songName":"Dirty Vibe (Ricky Remedy Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/180774298&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Jack U",
+    "songPublisher":"ATLANTIC RECORDS",
+    "songName":"To U",
+    "songNumber":"41",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/193270668&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/VAHobponnoM?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=6396213&type=track"
+    ]
+  },
+  {
+    "artistName":"Slander & NGHTMRE",
+    "songPublisher":"FREE TRACK",
+    "songName":"You",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/200817055&auto_play=true&show_artwork=true&color=D6DCFE"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"Kyoto",
+    "songNumber":"42",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/45719021&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/86khmc6y1yE?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Skrillex",
+    "songPublisher":"BIG BEAT RECORDS",
+    "songName":"Kyoto ( VIP)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://www.youtube.com/embed/L93-7vRfxNs?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Daft Punk",
+    "songPublisher":"VIRGIN RECORDS",
+    "songName":"Aerodynamic",
+    "songNumber":"43",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/51423855&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/mCnJ2_xN2jU?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Babymetal",
+    "songPublisher":"BMD FOX RECORDS",
+    "songName":"Gimme Chocolate!",
+    "songNumber":"44",
+    "songLinks":[
+      "https://www.youtube.com/embed/WIKqgE4BwAY?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Benny Benassi",
+    "songPublisher":"ULTRA MUSIC",
+    "songName":"Cinema (Skrillex Remix)",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/50933429&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/Ua0KpfJsxKo?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=1952081&type=track"
+    ]
+  },
+  {
+    "artistName":"MUST DIE!",
+    "songPublisher":"OWSLA",
+    "songName":"Gem Shards",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/167413404&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/ynYEUbPYmfE?rel=0&start=0&autoplay=1",
+      "http://embed.beatport.com/player/?id=5899818&type=track"
+    ]
+  },
+  {
+    "artistName":"Jack U",
+    "songPublisher":"FREE TRACK",
+    "songName":"Get Free / Cinema",
+    "songNumber":"45",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/44172532&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/8QRDKgQz55A?rel=0&start=0&autoplay=1"
+    ]
+  },
+  {
+    "artistName":"Jack U",
+    "songPublisher":"ATLANTIC RECORDS",
+    "songName":"Where Are U Now",
+    "songNumber":"w/",
+    "songLinks":[
+      "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/193270658&auto_play=true&show_artwork=true&color=D6DCFE",
+      "https://www.youtube.com/embed/nntGTK2Fhb0?rel=0&start=0&autoplay=1"
+    ]
+  }
+]
