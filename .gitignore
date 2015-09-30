@@ -5,3 +5,5 @@ resources/bootstrap/js/npm.js
 npm-debug.log
 
 .idea/workspace.xml
+
+.idea/scopes/scope_settings.xml
