@@ -4,9 +4,9 @@
     <link href="/css/nextSong.css" rel="stylesheet" media="screen">
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/css/artistInfo.css" rel="stylesheet">
-    <link href="/css/testcss.css" rel="stylesheet">
-    <link href="/css/iconsTest.css" rel="stylesheet">
-    <link href="/css/fontTest.css" rel="stylesheet">
+    <!--<link href="/css/testcss.css" rel="stylesheet">-->
+    <!--<link href="/css/iconsTest.css" rel="stylesheet">-->
+    <!--<link href="/css/fontTest.css" rel="stylesheet">-->
     <script type=text/javascript src="/js/jquery.min.js"></script>
     <script type=text/javascript src="/js/handlebars.js"></script>
     <script type=text/javascript src="/bootstrap/js/bootstrap.min.js"></script>
@@ -30,326 +30,24 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="glyphicon glyphicon-home" href="Home" aria-hidden="true"> Home</a>
+            <a class="glyphicon glyphicon-user" href="artistInfo" aria-hidden="true"> Artist</a>
+            <a class="glyphicon glyphicon-user" href="tracklistInfo" aria-hidden="true"> Tracklist</a>
             <a class="glyphicon glyphicon-user" href="Admin" aria-hidden="true"> Admin</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <form class="navbar-form">
+                <div id="tracklistDropdown" class="form-group">
+                    <input id="inputFindTracklist" {{valueBinding="sName"}} class="typeahead" type="text" placeholder="SEARCH A TRACKLIST...">
+                </div>
+                <button id="searchButton" type="button"  onclick="searchTracklist(inputFindTracklist.value)" class="btn btn-success">Search</button>
+            </form>
         </div>
     </div>
 </nav>
 
 <div class='jumbotron' style="text-align: center">
     <div class="container">
-        <h1>Welcome to the Artist page</h1>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4 col-sm-push-8 col-md-3 col-md-push-9">
-            <h2 class="space-below h3 text-light text-gray_30 text-secondary">
-                Track Information
-            </h2>
-            <div class="row">
-                <div class="col-xs-9 col-sm-12">
-                    <dl class="description-list text-gray_40 h5 clearfix line-height_13">
-                        <dt>Released</dt>
-                        <dd>Jan 25, 2015</dd>
-                        <dt>BPM</dt>
-                        <dd>110</dd>
-                        <dt>Key</dt>
-                        <dd>D</dd>
-                        <dt>Genre</dt>
-                        <dd>
-                            <div id="ember1297" class="ember-view">  <a id="ember4441" class="ember-view text-blue text-underline_on-hover" href="/genres/big_room">    Electro House in Big Room</a><!---->
-
-                            </div>
-                        </dd>
-                        <dt>Label</dt>
-                        <dd>
-                            <a id="ember1309" class="ember-view text-blue text-underline_on-hover" href="/epicnetworkmusicofficial">                  EpicNetworkMusic
-                            </a>              </dd>
-                    </dl>
-                </div>
-            </div>
-            <a class="button_buy-on-pro space-above_1 space-below_1" target="_blank" href="https://pro.beatport.com/track/thehedonist/6213796?utm_source=bp_streaming&amp;utm_campaign=bptopro2015&amp;utm_content=bp_track&amp;utm_medium=streaming_track_page" title="Buy The Hedonist (Original Mix) on Beatport Pro">
-                <span class="icon-cart-blue"></span>
-                <span class="icon-cart-blue-active"></span>
-                Buy on Beatport Pro
-            </a>
-        </div>
-        <div class="col-sm-8 col-sm-pull-4 col-md-8 col-md-pull-3
-      space-above_3 space-above_sm-0">
-            <div class="offset-left-md_2">
-                <h2 class="space-below_1 offset-below_1 border-bottom text-secondary
-          h4 letter-spacing_2 text-gray_50 text-uppercase text-light">
-                    You Might Also Like
-                </h2>
-                <div id="ember1224" class="ember-view">            <ul id="ember4454" class="ember-view">  <li>
-                    <div id="ember4464" class="ember-view"><div class="space-below_1 offset-below_1 border-bottom">
-                        <div class="
-
-
-              list-player">
-                            <div class="list-player--hover-actions">
-                                <a class="icon-cart-gray-dark list-player--hover-buy-action" target="_blank" title="Buy Formalaic (Original Mix) on Beatport Pro" href="https://pro.beatport.com/track/formalaic/6919190?utm_source=bp_streaming&amp;utm_campaign=bptopro2015&amp;utm_content=bp_track&amp;utm_medium=streaming_hover_cart">
-                                    <i class="visually-hidden">Buy Formalaic (Original Mix) on Beatport Pro</i>
-                                </a>
-                                <a href="#" data-ember-action="4465" class="icon-heart-gray-dark
-                list-player--hover-heart-action">
-                                    <span class="visually-hidden">Heart this track</span>
-                                </a>
-                            </div>
-                            <div class="list-player--control">
-                                <div id="ember4467" class="ember-view"><a class="audio-control image-border" href="#" data-ember-action="4474" title="Play">
-                                    <div class="intrinsic-ratio_100">
-                                        <div class="intrinsic-ratio--inner">
-                                            <img class="intrinsic-ratio--cropped audio-control--art" src="https://api-media.beatport.com/80x80/sounds/wcauwacoyn9h/1438186573.jpg" srcset="https://api-media.beatport.com/160x160/sounds/wcauwacoyn9h/1438186573.jpg 2x">
-                                        </div>
-                                    </div>
-      <span class="icon-play-white
-                   audio-control--icon">
-      </span>
-                                </a>
-                                </div>
-                            </div>
-                            <div class="list-player--content-wrapper">
-                                <div class="list-player--clipped-content">
-                                    <div>
-                                        <a id="ember4468" class="ember-view list-player--name text-underline_on-hover clip-text
-            align-middle" href="/epicnetworkmusicofficial/tracks/wcauwacoyn9h/formalaic-original-mix" title="Formalaic (Original Mix) – Offramp">            <span class="list-player--title">Formalaic</span>
-            <span class="list-player--mix-name">
-              Original Mix
-            </span>
-                                        </a>        </div>
-        <span class="list-player--artist align-middle">
-            <span id="ember4477" class="ember-view">    <span id="ember4478" class="ember-view"><span class="text-gray_30">
-<a id="ember4479" class="ember-view text-blue text-underline_on-hover" href="/offramp">    Offramp</a><!---->
-</span>
-</span>
-</span>
-
-        </span>
-                                    <!---->      </div>
-                                <div class="list-player--meta">
-                                    <div class="player-meta">
-                                        <abbr class="icon-heart-gray-light
-    player-meta--item space-right" title="Heart count: 27">
-                                            27
-                                        </abbr>
-                                        <abbr class="player-meta--item space-right icon-play-gray-light" title="Play count: 1,732">
-                                            1.73K
-                                        </abbr>
-                                        <abbr class="player-meta--item icon-clock" title="Track length: 3:31">
-                                            3:31
-                                        </abbr>
-                                        <abbr title="Released 5 days ago">
-                                            <span class="space-right_04 space-left_04">·</span>
-                                            5 days ago
-                                        </abbr>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="list-player--progress">
-                                <div id="ember4472" class="ember-view progress cursor-pointer"><div class="progress-bar_outer">
-                                    <div class="progress-bar_inner" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                        <span class="visually-hidden">0% Complete</span>
-                                    </div>
-                                </div>
-
-                                    <div class="progress--waveforms">
-                                        <img class="progress--waveform" alt="Waveform" src="https://api-media.beatport.com/sounds/wcauwacoyn9h/1438130274.png">
-                                        <img class="progress--waveform-status" alt="Waveform progress" src="https://api-media.beatport.com/sounds/wcauwacoyn9h/1438130274.png">
-                                    </div>
-                                </div>
-                                <!---->    </div>
-                        </div>
-                    </div>
-                    </div>
-                </li>
-                    <li>
-                        <div id="ember4483" class="ember-view"><div class="space-below_1 offset-below_1 border-bottom">
-                            <div class="
-
-
-              list-player">
-                                <div class="list-player--hover-actions">
-                                    <a class="icon-cart-gray-dark list-player--hover-buy-action" target="_blank" title="Buy Awareness (Original Mix) on Beatport Pro" href="https://pro.beatport.com/track/awareness/6214004?utm_source=bp_streaming&amp;utm_campaign=bptopro2015&amp;utm_content=bp_track&amp;utm_medium=streaming_hover_cart">
-                                        <i class="visually-hidden">Buy Awareness (Original Mix) on Beatport Pro</i>
-                                    </a>
-                                    <a href="#" data-ember-action="4484" class="icon-heart-gray-dark
-                list-player--hover-heart-action">
-                                        <span class="visually-hidden">Heart this track</span>
-                                    </a>
-                                </div>
-                                <div class="list-player--control">
-                                    <div id="ember4486" class="ember-view"><a class="audio-control image-border" href="#" data-ember-action="4493" title="Play">
-                                        <div class="intrinsic-ratio_100">
-                                            <div class="intrinsic-ratio--inner">
-                                                <img class="intrinsic-ratio--cropped audio-control--art" src="https://api-media.beatport.com/80x80/sounds/zgrufmwziwdi/1429263729.jpg" srcset="https://api-media.beatport.com/160x160/sounds/zgrufmwziwdi/1429263729.jpg 2x">
-                                            </div>
-                                        </div>
-      <span class="icon-play-white
-                   audio-control--icon">
-      </span>
-                                    </a>
-                                    </div>
-                                </div>
-                                <div class="list-player--content-wrapper">
-                                    <div class="list-player--clipped-content">
-                                        <div>
-                                            <a id="ember4487" class="ember-view list-player--name text-underline_on-hover clip-text
-            align-middle" href="/epicnetworkmusicofficial/tracks/zgrufmwziwdi/awareness-original-mix" title="Awareness (Original Mix) – Andreas">            <span class="list-player--title">Awareness</span>
-            <span class="list-player--mix-name">
-              Original Mix
-            </span>
-                                            </a>        </div>
-        <span class="list-player--artist align-middle">
-            <span id="ember4496" class="ember-view">    <span id="ember4497" class="ember-view"><span class="text-gray_30">
-<a id="ember4498" class="ember-view text-blue text-underline_on-hover" href="/andreasofficial3">    Andreas</a><!---->
-</span>
-</span>
-</span>
-
-        </span>
-                                        <!---->      </div>
-                                    <div class="list-player--meta">
-                                        <div class="player-meta">
-                                            <abbr class="icon-heart-gray-light
-    player-meta--item space-right" title="Heart count: 1">
-                                                1
-                                            </abbr>
-                                            <abbr class="player-meta--item space-right icon-play-gray-light" title="Play count: 18">
-                                                18
-                                            </abbr>
-                                            <abbr class="player-meta--item icon-clock" title="Track length: 3:26">
-                                                3:26
-                                            </abbr>
-                                            <abbr title="Released 6 months ago">
-                                                <span class="space-right_04 space-left_04">·</span>
-                                                6 months ago
-                                            </abbr>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="list-player--progress">
-                                    <div id="ember4491" class="ember-view progress cursor-pointer"><div class="progress-bar_outer">
-                                        <div class="progress-bar_inner" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                            <span class="visually-hidden">0% Complete</span>
-                                        </div>
-                                    </div>
-
-                                        <div class="progress--waveforms">
-                                            <img class="progress--waveform" alt="Waveform" src="https://api-media.beatport.com/sounds/zgrufmwziwdi/1422238210.png">
-                                            <img class="progress--waveform-status" alt="Waveform progress" src="https://api-media.beatport.com/sounds/zgrufmwziwdi/1422238210.png">
-                                        </div>
-                                    </div>
-                                    <!---->    </div>
-                            </div>
-                        </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="ember4502" class="ember-view"><div class="space-below_1 offset-below_1 border-bottom">
-                            <div class="
-
-
-              list-player">
-                                <div class="list-player--hover-actions">
-                                    <a class="icon-cart-gray-dark list-player--hover-buy-action" target="_blank" title="Buy Guide (Original Mix) on Beatport Pro" href="https://pro.beatport.com/track/guide/6211658?utm_source=bp_streaming&amp;utm_campaign=bptopro2015&amp;utm_content=bp_track&amp;utm_medium=streaming_hover_cart">
-                                        <i class="visually-hidden">Buy Guide (Original Mix) on Beatport Pro</i>
-                                    </a>
-                                    <a href="#" data-ember-action="4503" class="icon-heart-gray-dark
-                list-player--hover-heart-action">
-                                        <span class="visually-hidden">Heart this track</span>
-                                    </a>
-                                </div>
-                                <div class="list-player--control">
-                                    <div id="ember4505" class="ember-view"><a class="audio-control image-border" href="#" data-ember-action="4512" title="Play">
-                                        <div class="intrinsic-ratio_100">
-                                            <div class="intrinsic-ratio--inner">
-                                                <img class="intrinsic-ratio--cropped audio-control--art" src="https://api-media.beatport.com/80x80/sounds/bfsgqtig9y6f/1429168443.jpg" srcset="https://api-media.beatport.com/160x160/sounds/bfsgqtig9y6f/1429168443.jpg 2x">
-                                            </div>
-                                        </div>
-      <span class="icon-play-white
-                   audio-control--icon">
-      </span>
-                                    </a>
-                                    </div>
-                                </div>
-                                <div class="list-player--content-wrapper">
-                                    <div class="list-player--clipped-content">
-                                        <div>
-                                            <a id="ember4506" class="ember-view list-player--name text-underline_on-hover clip-text
-            align-middle" href="/epicnetworkmusicofficial/tracks/bfsgqtig9y6f/guide-original-mix" title="Guide (Original Mix) – Cole Sipe, Alexis Anelli">            <span class="list-player--title">Guide</span>
-            <span class="list-player--mix-name">
-              Original Mix
-            </span>
-                                            </a>        </div>
-        <span class="list-player--artist align-middle">
-            <span id="ember4515" class="ember-view">    <span id="ember4516" class="ember-view"><span class="text-gray_30">
-<a id="ember4517" class="ember-view text-blue text-underline_on-hover" href="/colesipeofficial">    Cole Sipe</a>,
-</span>
-</span>
-    <span id="ember4519" class="ember-view"><span class="text-gray_30">
-<a id="ember4520" class="ember-view text-blue text-underline_on-hover" href="/alexisanelli">    Alexis Anelli</a><!---->
-</span>
-</span>
-</span>
-
-        </span>
-                                        <!---->      </div>
-                                    <div class="list-player--meta">
-                                        <div class="player-meta">
-                                            <abbr class="icon-heart-gray-light
-    player-meta--item space-right" title="Heart count: 1">
-                                                1
-                                            </abbr>
-                                            <abbr class="player-meta--item space-right icon-play-gray-light" title="Play count: 18">
-                                                18
-                                            </abbr>
-                                            <abbr class="player-meta--item icon-clock" title="Track length: 3:21">
-                                                3:21
-                                            </abbr>
-                                            <abbr title="Released 7 months ago">
-                                                <span class="space-right_04 space-left_04">·</span>
-                                                7 months ago
-                                            </abbr>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="list-player--progress">
-                                    <div id="ember4510" class="ember-view progress cursor-pointer"><div class="progress-bar_outer">
-                                        <div class="progress-bar_inner" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                            <span class="visually-hidden">0% Complete</span>
-                                        </div>
-                                    </div>
-
-                                        <div class="progress--waveforms">
-                                            <img class="progress--waveform" alt="Waveform" src="https://api-media.beatport.com/sounds/bfsgqtig9y6f/1422239240.png">
-                                            <img class="progress--waveform-status" alt="Waveform progress" src="https://api-media.beatport.com/sounds/bfsgqtig9y6f/1422239240.png">
-                                        </div>
-                                    </div>
-                                    <!---->    </div>
-                            </div>
-                        </div>
-                        </div>
-                    </li>
-
-                    <li class="">
-                        <div id="ember4524" class="ember-view">          <div class="row space-below_1">
-                            <div class="col-xs-12">
-                                <a href="#" data-ember-action="4525" class="                button_pagination text-uppercase text-center">
-                                    Load More
-                                </a>
-                            </div>
-                        </div>
-
-                        </div>  </li>
-                </ul>
-
-                </div>      </div>
-        </div>
+        <h1>Welcome to the Tracklist page</h1>
     </div>
 </div>
 
@@ -378,19 +76,24 @@
         {{#each objects}}
 
         <div id="artistTracklistsText" class="fb-profile-text">
-            <h2>Artist tracklists: {{tracklistName}}</h2>
-            <h2>
-                <a id="{{tracklistName}}" href="tracklistInfo?{{tracklistName}}" style="cursor:pointer">{{tracklistName}}
-                </a>
-            </h2>
+            <h2>Tracklist name: {{tracklistName}}</h2>
+            <!--<h2>-->
+                <!--<a id="{{tracklistName}}" href="tracklistInfo?{{tracklistName}}" style="cursor:pointer">{{tracklistName}}-->
+                <!--</a>-->
+            <!--</h2>-->
         </div>
+        </div>
+        <div class="fb-profile-text">
+            <!--<iframe width="420" height="315" src="{{tracklistLinks.youtubeLink}}"></iframe>-->
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={{tracklistLinks.soundCloudLink}}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
         </div>
     </ul>
     <hr>
 
-    {{#tracks}}
+    {{#tracklistTracks}}
     <div class="row">
-        <h1 class="pull-left">{{addOne @index}}</h1>
+        <h1 class="pull-left">{{trackNumber}}</h1>
+        {{#track}}
         <div class="media-body col-md-8">
             <div class="well well-lg">
                 <h4>
@@ -406,9 +109,11 @@
                 <p>{{summary}}</p>
             </div>
         </div>
+        {{/track}}
     </div>
     <hr>
-    {{/tracks}}
+
+    {{/tracklistTracks}}
     {{/each}}
 </script>
 

@@ -27,7 +27,17 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="glyphicon glyphicon-home" href="Home" aria-hidden="true"> Home</a>
+            <a class="glyphicon glyphicon-user" href="artistInfo" aria-hidden="true"> Artist</a>
+            <a class="glyphicon glyphicon-user" href="tracklistInfo" aria-hidden="true"> Tracklist</a>
             <a class="glyphicon glyphicon-user" href="Admin" aria-hidden="true"> Admin</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <form class="navbar-form">
+                <div id="songArtistDropdown" class="form-group">
+                    <input id="inputFindArtist" {{valueBinding="sName"}} class="typeahead" type="text" placeholder="SEARCH AN ARTIST...">
+                </div>
+                <button id="searchButton" type="button"  onclick="searchArtist(inputFindArtist.value)" class="btn btn-success">Search</button>
+            </form>
         </div>
     </div>
 </nav>

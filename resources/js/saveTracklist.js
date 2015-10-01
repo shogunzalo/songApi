@@ -5,6 +5,8 @@ var artistLookupUrl = baseUrl + 'artistName/';
 var genresLookupUrl = baseUrl + 'genreByName/'
 var tracklistLookupUrl = baseUrl + 'tracklistByName/'
 var lastNumberTrack = 1;
+var clientId = "d5ec21bf0dd9b8fea2cfe34033b988d4";
+
 
 function readTracklist(){
     $.getJSON("/js/test.json", function(json) {
@@ -279,6 +281,16 @@ function checkIfArtistExists(artist, cb){
     });
 }
 
+function resolveSoundcloud(soundCloudLink, cb){
+    $.ajax({
+        async: false,
+        url : "http://api.soundcloud.com/resolve?url="+ soundCloudLink +"&client_id=" + clientId
+    }).then(
+        function(data) {
+            cb(data.uri);
+    });
+}
+
 function postLinks(params, cb){
 
     var links = {};
@@ -286,6 +298,9 @@ function postLinks(params, cb){
     if (params.length > 0){
         params.forEach(function (element, index, array){
             if(element.indexOf("soundcloud") > 0){
+                resolveSoundcloud(element, function(result){
+                    element = result;
+                });
                 links.soundCloudLink = element;
             }else if(element.indexOf("beatport") > 0){
                 links.beatPortLink = element;

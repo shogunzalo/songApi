@@ -1,9 +1,19 @@
+var isEncoded = function(str){
+    return decodeURIComponent(str) !== str;
+}
+
+
 function searchSong(inputText) {
 
-    //inputText = inputText.replace(/\?/g, 'kr4mn01ts3uq');
+    if(!isEncoded(inputText)){
+        inputText = encodeURIComponent(inputText);
+    }
+    if(inputText.length == 0){
+        return;
+    }
 
 	$.ajax({
-		url : "http://localhost:3000/songName/" + encodeURIComponent(inputText)
+		url : "http://localhost:3000/songName/" + inputText
 	}).then(
 			function(data) {
 				emptyFields();
@@ -61,6 +71,7 @@ function emptyFields() {
 
 var allSongsNames = new Array();
 var allArtistsNames = new Array();
+var allTracklistsNames = new Array();
 var allButExcluded = new Array();
 
 // Testing purposes... Names need to be retrieved from Song collection AND/OR in
@@ -108,6 +119,29 @@ function defineArtists() {
 		}
 	});
 }
+
+function defineTracklists() {
+    $.ajax({
+        url : "http://localhost:3000/tracklists/"
+    }).then(function(data) {
+        // for(i = 0; i < data.length; i++){
+        // allSongNames[i] = data[i].songOne;
+        // }
+        var seen = {};
+        // allSongsNames = []; //TODO:NEED TO SOLVE THIS AS IF WE KEEP THE
+        // SOURCE AND THE ALLSONGS VAR WE ARE USING THE DOUBLE OF SPACE
+        var len = data.length;
+        var j = 0;
+        for (var i = 0; i < len; i++) {
+            var item = data[i].tracklistName;
+            if (seen[item] !== 1) {
+                seen[item] = 1;
+                allTracklistsNames[j++] = item;
+            }
+        }
+    });
+}
+
 
 
 //FUNCTION USED TO EXCLUDE THE MATCHES WHEN ADDING A NEW MIX
@@ -216,6 +250,8 @@ function substringMatcher(strs) {
 $(document).ready(function() {
 
 	defineNames();
+    defineArtists();
+    defineTracklists();
 
 	$('#the-basics .typeahead').typeahead({
 		hint : true,
@@ -227,8 +263,6 @@ $(document).ready(function() {
 		source : substringMatcher(allSongsNames)
 	});
 
-	defineArtists();
-
 	$('#songArtistDropdown .typeahead').typeahead({
 		hint : true,
 		highlight : true,
@@ -238,6 +272,16 @@ $(document).ready(function() {
 		displayKey : 'value',
 		source : substringMatcher(allArtistsNames)
 	});
+
+    $('#tracklistDropdown .typeahead').typeahead({
+        hint : true,
+        highlight : true,
+        minLength : 1
+    }, {
+        name : 'states',
+        displayKey : 'value',
+        source : substringMatcher(allTracklistsNames)
+    });
 	
 	
 	//FOR ENTER KEY
@@ -252,9 +296,10 @@ $(document).ready(function() {
 	$(document).on("click",".tt-suggestion", function (e) {
 		if (e.type == "click") {
 //		alert($(this).text()+" Click");
-		searchSong($(this).text());
+//		searchSong($(this).text());
+        $('#searchButton').trigger('click');
 		}
-		});
+	});
 	
 	
 });

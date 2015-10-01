@@ -2,15 +2,23 @@
  * Created by gonzalo on 08-03-15.
  */
 
-function searchArtist() {
+function searchArtist(param) {
+
+    if(!param){
+        param = window.location.search.substring(1);
+    }
+    if(param.length == 0){
+        return;
+    }
 
     $.ajax({
-        url : "http://localhost:3000/artistName/" + window.location.search.substring(1)
+        url : "http://localhost:3000/artistName/" + param
     }).then(
         function(data) {
             //emptyFields();
             // TODO: Show the artist information
             try {
+                clearAll();
                 searchArtistTracklist(data[0]._id);
                 fillArtistTemplate(data);
                 //createArtistSearched(data[0]);
@@ -21,6 +29,13 @@ function searchArtist() {
                 console.log(err);
             }
         });
+}
+
+function clearAll(){
+    $('#artistInfo').empty();
+    $('#songMatchesDiv').empty();
+    $('#artistTracklists').empty();
+    $('#artistSongs').empty();
 }
 
 function searchArtistTracklist(params) {

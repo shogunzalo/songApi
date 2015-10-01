@@ -2,15 +2,23 @@
  * Created by gonzalo on 08-03-15.
  */
 
-function searchTracklist() {
+function searchTracklist(param) {
+
+    if(!param){
+        param = window.location.search.substring(1);
+    }
+    if(param.length == 0){
+        return;
+    }
 
     $.ajax({
-        url : "http://localhost:3000/tracklistByName/" + window.location.search.substring(1)
+        url : "http://localhost:3000/tracklistByName/" + param
     }).then(
         function(data) {
             //emptyFields();
             // TODO: Show the artist information
             try {
+                clearAll();
                 fillTracklistsTemplate(data);
             } catch (err) {
                 $('.songMatchesDiv').append(
@@ -19,6 +27,10 @@ function searchTracklist() {
             }
         });
 
+}
+
+function clearAll(){
+    $('#tracklistsInfo').empty();
 }
 
 function fillTracklistsTemplate(data) {
