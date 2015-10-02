@@ -297,10 +297,12 @@ function postLinks(params, cb){
 
     if (params.length > 0){
         params.forEach(function (element, index, array){
-            if(element.indexOf("soundcloud") > 0){
+            if(element.indexOf("https://soundcloud.com") > -1){
                 resolveSoundcloud(element, function(result){
                     element = result;
                 });
+                links.soundCloudLink = element;
+            }else if(element.indexOf("api.soundcloud.com") > 0){
                 links.soundCloudLink = element;
             }else if(element.indexOf("beatport") > 0){
                 links.beatPortLink = element;
@@ -311,7 +313,7 @@ function postLinks(params, cb){
             }else if(element.indexOf("youtube") > 0){
                 links.youtubeLink = element;
             }else if(element.indexOf("mixcloud") > 0){
-            links.mixcloudLink = element;
+                links.mixcloudLink = element;
             }else if(element.indexOf("index.html") > 0){
                 //nothing
             }else{

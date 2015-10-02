@@ -2,6 +2,16 @@ var isEncoded = function(str){
     return decodeURIComponent(str) !== str;
 }
 
+Handlebars.registerHelper('autoPlayFalse', function(params) {
+    return params.replace("&auto_play=true", "&auto_play=false");;
+});
+
+Handlebars.registerHelper('ifCond', function(v1, options) {
+    if(v1) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
 
 function searchSong(inputText) {
 

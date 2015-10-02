@@ -2,6 +2,8 @@
 var mongoose = require('mongoose');
 var Song = require('../models/song.js');
 var Artist = require('../models/artist.js');
+var Link = require('../models/link.js');
+
 
 //GET - Return all songs in the DB
 exports.findAllSongs = function(req, res) {
@@ -42,6 +44,14 @@ Song.find({songName: req.params.id})
             path: 'songMixs.nextSong.songArtist',
             model: 'Artist'
         };
+
+        var options3 = {
+            path: 'songMixs.nextSong.songLinks',
+            model: 'Link'
+        };
+
+        Link.populate(docs, options3, function (err, projects) {
+        });
 
         Artist.populate(docs, options2, function (err, projects) {
             res.json(projects);

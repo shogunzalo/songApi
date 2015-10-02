@@ -146,6 +146,9 @@
                     {{/songArtist}}
                     <p>{{summary}}</p>
                 </div>
+                {{#ifCond songLinks.soundCloudLink.length}}
+                    <iframe id="iframeFirst{{@index}}" width="100%" height="166" scrolling="no" frameborder="no" src="{{autoPlayFalse songLinks.soundCloudLink}}"></iframe>
+                {{/ifCond}}
             </div>
         </div>
         <hr>
@@ -176,8 +179,11 @@
     </div>
     </div>
     </div>
-    <hr>
-    {{/songMixs}}
+        {{#ifCond nextSong.songLinks.soundCloudLink.length}}
+            <iframe id="iframeNext{{@index}}" width="100%" height="166" scrolling="no" frameborder="no" src="{{autoPlayFalse nextSong.songLinks.soundCloudLink}}"></iframe>
+        {{/ifCond}}
+        <hr>
+        {{/songMixs}}
     {{/each}}
     </ul>
 </script>

@@ -3,8 +3,10 @@
  */
 //File: controllers/songs.js
 var mongoose = require('mongoose');
+//var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var Tracklist = require('../models/tracklist.js');
 var Song = require('../models/song.js');
+var Link = require('../models/link.js');
 var Artist = require('../models/artist.js');
 var Mix  = require('../models/mix.js');
 var sys = require('sys')
@@ -61,12 +63,21 @@ exports.findTracklistByName = function(req, res) {
             };
 
             if (err) return res.json(500);
+
             Song.populate(docs, options, function (err, projects) {
 
                 var options2 = {
                     path: 'tracklistTracks.track.songArtist',
                     model: 'Artist'
                 };
+
+                var options3 = {
+                    path: 'tracklistTracks.track.songLinks',
+                    model: 'Link'
+                };
+
+                Link.populate(docs, options3, function (err, projects) {
+                });
 
                 Artist.populate(docs, options2, function (err, projects) {
                     res.json(projects);
