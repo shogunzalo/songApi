@@ -106,11 +106,19 @@
                     </a>
                     </span>
                 {{/songArtist}}
-                <img src="/images/soundcloud.png" width="50" height="50" class="img-thumbnail pull-right" style="cursor: pointer" onclick="alert('Hola')">
+                {{#ifCond songLinks.youtubeLink.length}}
+                <img src="/images/youtube.png" width="50" height="50" class="img-thumbnail pull-right" style="cursor: pointer" onclick="toggleYFrame({{@index}}, {{safeString songLinks.youtubeLink}});">
+                {{/ifCond}}
+                {{#ifCond songLinks.soundCloudLink.length}}
+                <img src="/images/soundcloud.png" width="50" height="50" class="img-thumbnail pull-right" style="cursor: pointer" onclick="toggleSFrame({{@index}}, {{safeString songLinks.soundCloudLink}});">
+                {{/ifCond}}
                 <p>{{summary}}</p>
             </div>
+            {{#ifCond songLinks.youtubeLink.length}}
+            <iframe id="youtubeIframe{{@index}}" width="100%" style="display: none" height="166" scrolling="no" frameborder="no"></iframe>
+            {{/ifCond}}
             {{#ifCond songLinks.soundCloudLink.length}}
-                <iframe id="iframe{{@index}}" width="100%" height="166" scrolling="no" frameborder="no" src="{{autoPlayFalse songLinks.soundCloudLink}}"></iframe>
+                <iframe id="soundcloudIframe{{@index}}" width="100%" style="display: none" height="166" scrolling="no" frameborder="no"></iframe>
             {{/ifCond}}
         </div>
         {{/track}}

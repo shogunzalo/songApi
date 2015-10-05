@@ -2,8 +2,12 @@ var isEncoded = function(str){
     return decodeURIComponent(str) !== str;
 }
 
-Handlebars.registerHelper('autoPlayFalse', function(params) {
-    return params.replace("&auto_play=true", "&auto_play=false");;
+Handlebars.registerHelper('autoPlayFalseSoundCLoud', function(params) {
+    return params.replace("&auto_play=true", "&auto_play=false");
+});
+
+Handlebars.registerHelper('autoPlayFalseYoutube', function(params) {
+    return params.replace("&autoplay=1", "&autoplay=0");
 });
 
 Handlebars.registerHelper('ifCond', function(v1, options) {
@@ -12,6 +16,33 @@ Handlebars.registerHelper('ifCond', function(v1, options) {
     }
     return options.inverse(this);
 });
+
+Handlebars.registerHelper("addOne", function(value, options)
+{
+    return parseInt(value) + 1;
+});
+
+Handlebars.registerHelper('safeString', function(object) {
+
+    return new Handlebars.SafeString(
+        "'"+object+"'"
+    );
+});
+
+function toggleSFrame(index, url){
+    var idS = "soundcloudIframe" + index;
+    if($("#" + idS).attr("src") != url){
+        $("#" + idS).attr("src", url);
+    }
+    $("#" + idS).toggle();
+}
+function toggleYFrame(index, url){
+    var idY = "youtubeIframe" + index;
+    if($("#" + idY).attr("src") != url){
+        $("#" + idY).attr("src", url);
+    }
+    $("#" + idY).toggle();
+}
 
 function searchSong(inputText) {
 
