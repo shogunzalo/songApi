@@ -106,7 +106,7 @@ function saveTracklistSongs(tracklist, tracklistId){
 
         putSongToTracklist(songExists, tracklistId, element.songNumber);
         if(index >= 2){ //Don't mix the first song
-            saveMix(array, index, lastNumberTrack);
+            saveMix(array, index, tracklistId);
         }
     });
 
@@ -336,16 +336,62 @@ function postLinks(params, cb){
     });
 }
 
+function postImage(artistName, artistNameTrim){
+
+    var imageUrl;
+
+    getImageUrl(artistNameTrim, artistName, function(params){
+
+        imageUrl = params;
+        artistImage = {imageName: artistName, imgUrl: "http:" + imageUrl};
+
+        $.ajax({
+            url: 'http://localhost:3000/saveImage/',
+            type: 'post',
+            dataType: 'json',
+            data: artistImage,
+            async: false,
+            success: function(data) {
+                console.log("Image posted: " + data.artistName);
+                //cb(data._id);
+            }
+        });
+    });
+
+}
+
+function getImageUrl(params, artistName, cb){
+
+    var artistImageUrl;
+
+    $.ajax({
+        url: 'http://whateverorigin.org/get?url=' + encodeURIComponent('http://dj.beatport.com/' + params) + '&callback=?',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            artistImageUrl = $(".profile", $(data.contents)).attr ("src");
+            if(artistImageUrl != undefined){
+                cb(artistImageUrl);
+            }else{
+                cb('//dummyimage.com/300x300&text=' + artistName);
+            }
+
+        }
+    });
+
+}
+
 function postArtist(artist, linksId, cb) {
 
     var songArtist;
 
     if(linksId != undefined && linksId.length > 0){
         songArtist = {artistName: artist.artistName, artistLinks: linksId};
+        postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
     }else {
         songArtist = {artistName: artist};
+        postImage(artist, artist.replace(/\s/g, ''));
     }
-
 
     $.ajax({
         url: 'http://localhost:3000/artist/',
@@ -423,19 +469,19 @@ function searchSong(song){
     });
 }
 
-function saveMix(tracklist, index){
+function saveMix(tracklist, index, tracklistId){
     var boolResult;
     mixExists(tracklist, index, function(result){boolResult = result});
 	if(tracklist[index].songNumber != 'w/' && !boolResult){
 		//If the current track is a number
 		//Mix with the previous one
 		//Save as the latest track number
-		postMix(tracklist, index, lastNumberTrack);
+		postMix(tracklist, index, lastNumberTrack, tracklistId);
 		lastNumberTrack = index;
 	}else if(tracklist[index].songNumber == 'w/' && !boolResult){
 		//If the current track is a with
 		//Mix with the latest number track
-		postMix(tracklist, index, lastNumberTrack);
+		postMix(tracklist, index, lastNumberTrack, tracklistId);
 	}else if(boolResult){
         console.log("Mix already exists");
     }
@@ -443,7 +489,7 @@ function saveMix(tracklist, index){
 
 //Insert mix
 
-function postMix(tracklist, index, lastNumberTrack) {
+function postMix(tracklist, index, lastNumberTrack, tracklistId) {
     var mixData = {songName: tracklist[lastNumberTrack], nextSong: tracklist[index].songName};
 
     $.ajax({
@@ -451,15 +497,16 @@ function postMix(tracklist, index, lastNumberTrack) {
         async: false
     }).then(function(data) {
         mixData.nextSong = data[0]._id;
-        insertMix(mixData);
+        insertMix(mixData, tracklistId);
     });
 }
 
-function insertMix(mixData){
+function insertMix(mixData, tracklistId){
 
     var parsedMixData = {nextSong: mixData.nextSong,
         comments: "Test data.",
-        rating: 4
+        rating: 4,
+        seenIn: tracklistId
     }
 
     $.ajax({

@@ -227,13 +227,33 @@
 </div>
 <div class="container">
     <h3>Scrap site: </h3>
-    <input type="text" name="testInput" id="testInput" required="" placeholder="Song summary" />
+    <input type="text" name="testInput" id="testInput" required="" placeholder="Site to scrap" />
     <button id="testBtn" type="button" onclick="testFcn(testInput.value)" >Scrap</button>
     <div id="response"></div>
 </div>
 </div>
 
+
+<div class="container">
+    <h3>Save Image to mongodb: </h3>
+    <input type="text" name="testInput" id="imgInput" required="" placeholder="Image url..." />
+    <input type="text" name="testInput" id="imgName" required="" placeholder="Image name..." />
+    <button id="imgBtn" type="button" onclick="saveImage(imgInput.value.substring(5), imgName.value)" >Save image</button>
+    <!--<div><img id="imageResponse" src="http://localhost:3000/images/"></div>-->
+</div>
+</div>
+
+<div class="container">
+    <h3>Get artist image url: </h3>
+    <input type="text" name="testInput" id="artistImage" required="" placeholder="Image url..." />
+    <button id="artistImageBtn" type="button" onclick="getImageUrl2(artistImage.value)" >Get artist Image URL</button>
+    <div id="artistImageResponse"></div>
+</div>
+</div>
+
+
 <script>
+
     function testFcn(params){
         if(params.indexOf("http://www.1001tracklists.com/tracklist/") == -1){
             return;
@@ -253,6 +273,44 @@
             $('#response').html("");
         });
     }
+
+
+    function saveImage(params, params2){
+
+        artistImage = {imageName: params2, imgUrl: "http:" + params};
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/saveImage",
+            data: artistImage,
+            beforeSend: function() {
+                $('#response').html("<img src='/images/loading.gif' />");
+            },
+            success: function(json) {
+//                saveTracklist(JSON.parse(json));
+            }
+        }).done(function( o ) {
+//            $('#response').html("");
+        });
+    }
+
+    function getImageUrl2(params){
+
+        var artistImageUrl;
+
+        $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent('http://dj.beatport.com/' + params) + '&callback=?', function(data){
+//            console.log(data.contents);
+            artistImageUrl = $(".profile", $(data.contents)).attr ("src");
+        }).done(function( o ) {
+
+            console.log(artistImageUrl);
+
+            $('#artistImageResponse').html("<img src='http://"+ artistImageUrl.substring(2) + "' />");
+
+        });
+
+    }
+
 </script>
 
 </body>

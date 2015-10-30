@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Song = require('../models/song.js');
 var Artist = require('../models/artist.js');
 var Link = require('../models/link.js');
+var Tracklist = require('../models/tracklist.js');
 
 
 //GET - Return all songs in the DB
@@ -50,7 +51,15 @@ Song.find({songName: req.params.id})
             model: 'Link'
         };
 
+        var options4 = {
+            path: 'songMixs.seenIn',
+            model: 'Tracklist'
+        };
+
         Link.populate(docs, options3, function (err, projects) {
+        });
+
+        Tracklist.populate(docs, options4, function (err, projects) {
         });
 
         Artist.populate(docs, options2, function (err, projects) {

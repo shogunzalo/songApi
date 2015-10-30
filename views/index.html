@@ -191,6 +191,9 @@
     {{#recommendations}}
     <p>{{comments}}</p>
     {{/recommendations}}
+        {{#seenIn}}
+        Seen in: <a href="/tracklistInfo?{{this.tracklistName}}">{{this.tracklistName}}</a>
+        {{/seenIn}}
     </div>
         {{#ifCond nextSong.songLinks.youtubeLink.length}}
         <iframe id="youtubeIframe{{addOne @index}}" width="100%" style="display: none" height="166" scrolling="no" frameborder="no"></iframe>

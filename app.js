@@ -61,6 +61,8 @@ var apiSongArtist = require('./controllers/songArtist.js');
 var apiTracklist = require('./controllers/tracklists.js');
 var apiLinks = require('./controllers/links.js');
 var apiGenres = require('./controllers/genres.js');
+var apiImages = require('./controllers/images.js');
+
 
 // var apiSongMix = require('./controllers/songMix.js');
 // var apiTracklist = require('./controllers/tracklists.js');
@@ -73,6 +75,7 @@ app.post('/tracklist', apiTracklist.addTracklist);
 app.post('/links', apiLinks.addLinks);
 app.post('/genre', apiGenres.addGenres);
 app.post('/webCrawler', apiTracklist.webCrawler);
+app.post('/saveImage', apiImages.saveImage)
 
 //PUT
 app.put('/addMix/:id', apiSong.addMixs);
@@ -117,6 +120,7 @@ app.get('/tracklistByName/:id', apiTracklist.findTracklistByName);
 app.get('/tracklistByArtist/:id', apiTracklist.findTracklistByArtist);
 app.get('/genreByName/:id', apiGenres.findGenreByName);
 app.get('/genres/', apiGenres.findAllGenres);
+app.get('/imageName/:id', apiImages.findImageByName);
 
 
 

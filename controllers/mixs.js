@@ -52,7 +52,8 @@ exports.addMix = function(req, res) {
         recommendations: [{
         comments: req.body.comments,
         rating: req.body.rating
-        }]
+        }],
+        seenIn: req.body.seenIn
     });
 
     mix.save(function(err, mix) {
@@ -81,19 +82,19 @@ exports.addRecommendations = function(req, res) {
     });
 };
 
-//PUT - Update a register already exists
-exports.updateMix = function(req, res) {
-    Mix.findById(req.params.id, function(err, mix) {
-        mix.songOne           = req.body.songOne;
-        mix.songTwo  	      = req.body.songTwo;
-        mix.recomendations    = req.body.recomendations;
-
-        mix.save(function(err) {
-            if(err) return res.send(500, err.message);
-      res.status(200).jsonp(mix);
-        });
-    });
-};
+////PUT - Update a register already exists
+//exports.updateMix = function(req, res) {
+//    Mix.findById(req.params.id, function(err, mix) {
+//        mix.songOne           = req.body.songOne;
+//        mix.songTwo  	      = req.body.songTwo;
+//        mix.recomendations    = req.body.recomendations;
+//
+//        mix.save(function(err) {
+//            if(err) return res.send(500, err.message);
+//      res.status(200).jsonp(mix);
+//        });
+//    });
+//};
 
 //DELETE - Delete a Mix with specified ID
 exports.deleteMix = function(req, res) {

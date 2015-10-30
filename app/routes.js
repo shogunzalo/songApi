@@ -1,5 +1,5 @@
 // app/routes.js
-var viewRoute = "/Users/gonzalo/Documents/workspace/NextSong/songApi/views/";
+var viewRoute = "/Users/Gonzalo/Documents/songApi/views/";
 
 module.exports = function(app, passport) {
 
