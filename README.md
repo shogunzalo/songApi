@@ -1,2 +1,2 @@
 # Next song project
-GTFO
+Personal project for Dj's
