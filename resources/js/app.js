@@ -229,6 +229,7 @@ function defineExcludedTypeAhead() {
         source: substringMatcher(allButExcluded)
     });
 }
+
 function definePossibleMatches(excludeMatches){
     $.ajax({
         url : "http://localhost:3000/song/"

@@ -113,6 +113,7 @@ app.get('/song', apiSong.findAllSongs);
 app.get('/artist', apiArtist.findAllArtists);
 app.get('/songName/:id', apiSong.findSongByName);
 app.get('/artistName/:id', apiArtist.findArtistByName);
+app.get('/artistById/:id', apiArtist.findArtistById);
 app.get('/mix', apiMix.findAllMixs);
 app.get('/mix/:id', apiMix.findMixBySongId);
 app.get('/tracklists', apiTracklist.findAllTracklists);

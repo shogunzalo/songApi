@@ -55,9 +55,9 @@ function checkIfSongExistsInTracklist(){
 
 }
 
-function putSongToTracklist(song, tracklistId, songNumber){
+function putSongToTracklist(song, tracklistId, songNumber, songIndex){
 
-    var data = {tracklistTracks: song, trackNumber: songNumber};
+    var data = {tracklistTracks: song, trackNumber: songNumber, songIndex: songIndex};
 
     $.ajax({
         url: 'http://localhost:3000/addSongsToTracklist/' + tracklistId,
@@ -104,7 +104,9 @@ function saveTracklistSongs(tracklist, tracklistId){
             }
         });
 
-        putSongToTracklist(songExists, tracklistId, element.songNumber);
+        console.log(element.songIndex);
+
+        putSongToTracklist(songExists, tracklistId, element.songNumber, element.songIndex);
         if(index >= 2){ //Don't mix the first song
             saveMix(array, index, tracklistId);
         }

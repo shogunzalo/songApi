@@ -94,6 +94,7 @@ exports.updateTracklist = function(req, res) {
         tracklist.tracklistName       = req.body.tracklistName;
         tracklist.tracklistDate       = req.body.date;
         tracklist.tracklistTracks.trackNumber     = req.body.trackNumber;
+        tracklist.tracklistTracks.songIndex     = req.body.songIndex;
         tracklist.tracklistTracks.track     = req.body.track;
         tracklist.tracklistLinks   	  = req.body.genre;
 
@@ -107,7 +108,7 @@ exports.updateTracklist = function(req, res) {
 exports.addSongs = function(req, res) {
     console.log(req.body);
     console.log(req.params.id);
-    Tracklist.update({_id: req.params.id}, {$push: {"tracklistTracks": {"track": req.body.tracklistTracks, "trackNumber": req.body.trackNumber}}
+    Tracklist.update({_id: req.params.id}, {$push: {"tracklistTracks": {"track": req.body.tracklistTracks, "trackNumber": req.body.trackNumber, "songIndex": req.body.songIndex}}
     }, function(err, tracklist) {
         if(err){
             console.log(err.message);
