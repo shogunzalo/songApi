@@ -59,10 +59,14 @@ module.exports = function(app, passport) {
     // we will use route middleware to verify this (the isLoggedIn function)
 
     app.get('/profile', isLoggedIn, function(req, res) {
-        var options = {
-            user : req.user
-        };
-        res.sendfile(viewRoute + '/profile.html', options);// get the user out of session and pass to template
+        //var options = {
+        //    headers: {
+        //        user : req.user.toString(),
+        //        'x-timestamp': Date.now(),
+        //        'x-sent': true
+        //    }
+        //};
+        res.sendfile(viewRoute + '/profile.html', { user : req.user });// get the user out of session and pass to template
         //res.sendfile();
         console.log(req.user);
     });

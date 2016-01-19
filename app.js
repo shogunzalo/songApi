@@ -12,6 +12,17 @@ var cookieParser = require('cookie-parser');
 //var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
+function requireRole(role) {
+    return function(req, res, next) {
+        console.log("Validating user.");
+        console.log(req.user.role);
+        if(req.user && req.user.role === role)
+            next();
+        else
+            res.send(403);
+    }
+}
+
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -109,6 +120,7 @@ app.get('/test', function(req,res){
     res.sendfile(__dirname + '/views/test.html');
 });
 
+//app.get('/song', requireRole("admin"), apiSong.findAllSongs);
 app.get('/song', apiSong.findAllSongs);
 app.get('/artist', apiArtist.findAllArtists);
 app.get('/songName/:id', apiSong.findSongByName);
