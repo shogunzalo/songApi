@@ -115,10 +115,10 @@ app.put('/addSongsToTracklist/:id', requireRole("admin"), apiTracklist.addSongs)
 //app.get('/tracklistInfo', function(req,res){
 //    res.sendfile(__dirname + '/views/tracklistInfo.html');
 //});
-//
-//app.get('/test', function(req,res){
-//    res.sendfile(__dirname + '/views/test.html');
-//});
+
+app.get('/test', function(req,res){
+    res.sendfile(__dirname + '/views/test.html');
+});
 
 //app.get('/song', requireRole("admin"), apiSong.findAllSongs);
 app.get('/song', apiSong.findAllSongs);
