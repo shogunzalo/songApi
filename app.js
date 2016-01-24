@@ -55,9 +55,9 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 
 var router = express.Router();
 
-router.get('/', function(req, res) {
-   res.send("Mix App!");
-});
+//router.get('/', function(req, res) {
+//   res.send("Mix App!");
+//});
 
 app.use(router);
 app.use(express.static(__dirname + '/resources')); //DECLARE STATIC DIR
@@ -79,46 +79,46 @@ var apiImages = require('./controllers/images.js');
 // var apiTracklist = require('./controllers/tracklists.js');
 
 //POST
-app.post('/song', apiSong.addSong);
-app.post('/artist', apiArtist.addArtist);
-app.post('/mix', apiMix.addMix);
-app.post('/tracklist', apiTracklist.addTracklist);
-app.post('/links', apiLinks.addLinks);
-app.post('/genre', apiGenres.addGenres);
-app.post('/webCrawler', apiTracklist.webCrawler);
-app.post('/saveImage', apiImages.saveImage)
+app.post('/song', requireRole("admin"), apiSong.addSong);
+app.post('/artist', requireRole("admin"), apiArtist.addArtist);
+app.post('/mix', requireRole("admin"), apiMix.addMix);
+app.post('/tracklist', requireRole("admin"), apiTracklist.addTracklist);
+app.post('/links', requireRole("admin"), apiLinks.addLinks);
+app.post('/genre', requireRole("admin"), apiGenres.addGenres);
+app.post('/webCrawler', requireRole("admin"), apiTracklist.webCrawler);
+app.post('/saveImage', requireRole("admin"), apiImages.saveImage)
 
 //PUT
-app.put('/addMix/:id', apiSong.addMixs);
+app.put('/addMix/:id', requireRole("admin"), apiSong.addMixs);
 //Plan to use this one for the mix as posts
-app.put('/addMix/:id', apiMix.addMixs);
-app.put('/addRecommendations/:id', apiMix.addRecommendations);
-app.put('/addArtistToTracklist/:id', apiTracklist.addArtists);
-app.put('/addGenresToTracklist/:id', apiTracklist.addGenres);
-app.put('/addSongsToTracklist/:id', apiTracklist.addSongs);
+app.put('/addMix/:id', requireRole("admin"), apiMix.addMixs);
+app.put('/addRecommendations/:id', requireRole("admin"), apiMix.addRecommendations);
+app.put('/addArtistToTracklist/:id', requireRole("admin"), apiTracklist.addArtists);
+app.put('/addGenresToTracklist/:id', requireRole("admin"), apiTracklist.addGenres);
+app.put('/addSongsToTracklist/:id', requireRole("admin"), apiTracklist.addSongs);
 
 
 
 //GET
-app.get('/home', function(req,res){
- res.sendfile(__dirname + '/views/index.html');
-});
+//app.get('/home', function(req,res){
+// res.sendfile(__dirname + '/views/index.html');
+//});
 
-app.get('/admin', function(req,res){
- res.sendfile(__dirname + '/views/admin.html');
-});
+//app.get('/admin', function(req,res){
+// res.sendfile(__dirname + '/views/admin.html');
+//});
 
-app.get('/artistInfo', function(req,res){
-    res.sendfile(__dirname + '/views/artistInfo.html');
-});
-
-app.get('/tracklistInfo', function(req,res){
-    res.sendfile(__dirname + '/views/tracklistInfo.html');
-});
-
-app.get('/test', function(req,res){
-    res.sendfile(__dirname + '/views/test.html');
-});
+//app.get('/artistInfo', function(req,res){
+//    res.sendfile(__dirname + '/views/artistInfo.html');
+//});
+//
+//app.get('/tracklistInfo', function(req,res){
+//    res.sendfile(__dirname + '/views/tracklistInfo.html');
+//});
+//
+//app.get('/test', function(req,res){
+//    res.sendfile(__dirname + '/views/test.html');
+//});
 
 //app.get('/song', requireRole("admin"), apiSong.findAllSongs);
 app.get('/song', apiSong.findAllSongs);
