@@ -15,7 +15,7 @@ var session      = require('express-session');
 function requireRole(role) {
     return function(req, res, next) {
         console.log("Validating user.");
-        console.log(req.user.role);
+        //console.log(req.user.role);
         if(req.user && req.user.role === role)
             next();
         else
@@ -104,9 +104,9 @@ app.put('/addSongsToTracklist/:id', requireRole("admin"), apiTracklist.addSongs)
 // res.sendfile(__dirname + '/views/index.html');
 //});
 
-//app.get('/admin', function(req,res){
-// res.sendfile(__dirname + '/views/admin.html');
-//});
+app.get('/admin', requireRole("admin"), function(req,res){
+res.sendfile(__dirname + '/views/admin.html');
+});
 
 //app.get('/artistInfo', function(req,res){
 //    res.sendfile(__dirname + '/views/artistInfo.html');
