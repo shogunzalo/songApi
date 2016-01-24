@@ -60,7 +60,7 @@ function putSongToTracklist(song, tracklistId, songNumber, songIndex){
     var data = {tracklistTracks: song, trackNumber: songNumber, songIndex: songIndex};
 
     $.ajax({
-        url: 'http://localhost:3000/addSongsToTracklist/' + tracklistId,
+        url: baseUrl + 'addSongsToTracklist/' + tracklistId,
         type: 'put',
         dataType: 'json',
         data: data,
@@ -162,7 +162,7 @@ function createTracklist(json, artistIds, cb){
 function putTracklistArtists(tracklistId, artistId){
     var data = {tracklistArtist: artistId}
     $.ajax({
-        url: 'http://localhost:3000/addArtistToTracklist/' + tracklistId,
+        url: baseUrl + 'addArtistToTracklist/' + tracklistId,
         type: 'put',
         dataType: 'json',
         data: data,
@@ -178,7 +178,7 @@ function putTracklistArtists(tracklistId, artistId){
 function putTracklistGenres(tracklistId, genre){
     var data = {tracklistGenres: genre}
     $.ajax({
-        url: 'http://localhost:3000/addGenresToTracklist/' + tracklistId,
+        url: baseUrl + 'addGenresToTracklist/' + tracklistId,
         type: 'put',
         dataType: 'json',
         data: data,
@@ -327,7 +327,7 @@ function postLinks(params, cb){
     }
 
     return $.ajax({
-        url: 'http://localhost:3000/links/',
+        url: baseUrl + 'links/',
         type: 'post',
         dataType: 'json',
         data: links,
@@ -348,7 +348,7 @@ function postImage(artistName, artistNameTrim){
         artistImage = {imageName: artistName, imgUrl: "http:" + imageUrl};
 
         $.ajax({
-            url: 'http://localhost:3000/saveImage/',
+            url: baseUrl + 'saveImage/',
             type: 'post',
             dataType: 'json',
             data: artistImage,
@@ -396,7 +396,7 @@ function postArtist(artist, linksId, cb) {
     }
 
     $.ajax({
-        url: 'http://localhost:3000/artist/',
+        url: baseUrl + 'artist/',
         type: 'post',
         dataType: 'json',
         data: songArtist,
@@ -495,7 +495,7 @@ function postMix(tracklist, index, lastNumberTrack, tracklistId) {
     var mixData = {songName: tracklist[lastNumberTrack], nextSong: tracklist[index].songName};
 
     $.ajax({
-        url : "http://localhost:3000/songName/" + encodeURIComponent(mixData.nextSong),
+        url : baseUrl + "songName/" + encodeURIComponent(mixData.nextSong),
         async: false
     }).then(function(data) {
         mixData.nextSong = data[0]._id;
@@ -512,7 +512,7 @@ function insertMix(mixData, tracklistId){
     }
 
     $.ajax({
-        url: 'http://localhost:3000/mix/',
+        url: baseUrl + 'mix/',
         type: 'post',
         dataType: 'json',
         data: parsedMixData,
@@ -526,7 +526,7 @@ function insertMix(mixData, tracklistId){
 
 function searchSongId(songName, mixId){
     $.ajax({
-        url : "http://localhost:3000/songName/" + encodeURIComponent(songName.songName),
+        url : baseUrl + "songName/" + encodeURIComponent(songName.songName),
         async: false
     }).then(function(data) {
         insertMixIntoSong(data[0]._id, mixId);
@@ -537,7 +537,7 @@ function insertMixIntoSong(songId, mixId){
 
     var data = {songMixs: mixId}
     $.ajax({
-        url: 'http://localhost:3000/addMix/' + songId,
+        url: baseUrl + 'addMix/' + songId,
         type: 'put',
         dataType: 'json',
         data: data,
@@ -567,7 +567,7 @@ function insertMixIntoSong(songId, mixId){
 
 function postSong(songData, cb){
     $.ajax({
-        url: 'http://localhost:3000/song/',
+        url: baseUrl + 'song/',
         type: 'post',
         dataType: 'json',
         data: songData,
