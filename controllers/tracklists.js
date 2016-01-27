@@ -41,14 +41,41 @@ exports.findAllTracklists = function(req, res) {
 };
 
 //GET - Return tracklists by artist
+//exports.findTracklistByArtist = function(req, res) {
+//    Tracklist.find({tracklistArtist: req.params.id})
+//    //    .lean()
+//        .populate('tracklistArtist tracklistGenres tracklistLinks tracklistTracks.track')
+//        .exec(function(err, docs)
+//     {
+//            res.json(docs);
+//    });
+//};
+
 exports.findTracklistByArtist = function(req, res) {
     Tracklist.find({tracklistArtist: req.params.id})
-    //    .lean()
+        //    .lean()
         .populate('tracklistArtist tracklistGenres tracklistLinks tracklistTracks.track')
         .exec(function(err, docs)
-     {
-            res.json(docs);
-    });
+        {
+            var options = {
+                path: 'tracklistTracks.track',
+                model: 'Song'
+            };
+
+            if (err) return res.json(500);
+
+            Song.populate(docs, options, function (err, projects) {
+
+                var options3 = {
+                    path: 'tracklistTracks.track.songLinks',
+                    model: 'Link'
+                };
+
+                Link.populate(docs, options3, function (err, projects) {
+                    res.json(projects);
+                });
+            });
+        });
 };
 
 //GET - Return tracklists by name
