@@ -140,10 +140,11 @@ function createTracklist(json, artistIds, cb){
     //Artist needs to be Id(s)
     checkIfTracklistExists(tracklist, function(result){tracklistExists = result});
     if(!tracklistExists){
-        if(json[0].tracklistLinks.length > 0 || json[0].tracklistLinks.length != undefined){
+        if(json[0].tracklistLinks.length > 0 && json[0].tracklistLinks.length != undefined){
             postLinks(json[0].tracklistLinks, function(result){linksId = result;});
+            tracklist.tracklistLinks = linksId;
         }
-        tracklist.tracklistLinks = linksId;
+
         postTracklist(tracklist, function(result){tracklistId = result});
         genresIds.forEach(function(element){
             putTracklistGenres(tracklistId, element);
@@ -307,6 +308,7 @@ function postLinks(params, cb){
             }else if(element.indexOf("api.soundcloud.com") > 0){
                 links.soundCloudLink = element;
             }else if(element.indexOf("beatport") > 0){
+
                 links.beatPortLink = element;
             }else if(element.indexOf("facebook") > 0){
                 links.facebookLink = element;
