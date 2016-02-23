@@ -92,7 +92,7 @@ function saveTracklistSongs(tracklist, tracklistId){
 
         checkIfSongExists(element, function(result){
             if(!result){
-                var songJson = {"songName": element.songName,"bpm":"","key":"","songPublisher": element.songPublisher,"genre":"","summary":"","songArtist": artistExists};
+                var songJson = {"songName": element.songName,"bpm": element.songBpm,"key": element.songKey,"songPublisher": element.songPublisher,"genre":"","summary":"","songArtist": artistExists};
                 postLinks(element.songLinks, function(result){
                     if(result.length > 0){
                         songJson.songLinks = result
@@ -308,7 +308,6 @@ function postLinks(params, cb){
             }else if(element.indexOf("api.soundcloud.com") > 0){
                 links.soundCloudLink = element;
             }else if(element.indexOf("beatport") > 0){
-
                 links.beatPortLink = element;
             }else if(element.indexOf("facebook") > 0){
                 links.facebookLink = element;
