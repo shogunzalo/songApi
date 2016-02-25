@@ -151,8 +151,8 @@ app.delete('/mix/:id', apiMix.deleteMix);
 app.get('/song/:id', apiSong.findSongById);
 app.get('/artist/:id', apiArtist.findArtistById);
 
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(80, function() {
+  console.log("Node server running on http://localhost:80");
 });
 
 // connect to Mongo when the app initializes

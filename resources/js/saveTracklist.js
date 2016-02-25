@@ -1,5 +1,5 @@
 //Call once should be enough
-var baseUrl = 'http://localhost:3000/';
+var baseUrl = constants.baseUrl;
 var songLookupUrl = baseUrl + 'songName/';
 var artistLookupUrl = baseUrl + 'artistName/';
 var genresLookupUrl = baseUrl + 'genreByName/'
@@ -550,21 +550,6 @@ function insertMixIntoSong(songId, mixId){
     });
     return false;
 }
-
-//Submiting new song
-
-//function postSong(songData){
-//
-//    var songJson = {"songName": songData.songName[0],"bpm":"","key":"","recordLabel":"","genre":"","summary":"","songArtist":""};
-//
-//    $.ajax({
-//        url : "http://localhost:3000/artistName/" + songData.songArtist[0],
-//        async: false
-//    }).then(function(data) {
-//        songJson.songArtist = data[0]._id;
-//        insertSong(songJson);
-//    });
-//}
 
 function postSong(songData, cb){
     $.ajax({

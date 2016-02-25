@@ -54,7 +54,7 @@ function searchSong(inputText) {
     }
 
 	$.ajax({
-		url : "http://localhost:3000/songName/" + inputText
+		url : constants.baseUrl + "songName/" + inputText
 	}).then(
 			function(data) {
 				emptyFields();
@@ -119,7 +119,7 @@ var allButExcluded = new Array();
 // another way to avoid the for loop
 function defineNames() {
 	$.ajax({
-		url : "http://localhost:3000/song/"
+		url : constants.baseUrl + "song/"
 	}).then(function(data) {
 		// for(i = 0; i < data.length; i++){
 		// allSongNames[i] = data[i].songOne;
@@ -141,7 +141,7 @@ function defineNames() {
 
 function defineArtists() {
 	$.ajax({
-		url : "http://localhost:3000/artist/"
+		url : constants.baseUrl + "artist/"
 	}).then(function(data) {
 		// for(i = 0; i < data.length; i++){
 		// allSongNames[i] = data[i].songOne;
@@ -163,7 +163,7 @@ function defineArtists() {
 
 function defineTracklists() {
     $.ajax({
-        url : "http://localhost:3000/tracklists/"
+        url : constants.baseUrl + "tracklists/"
     }).then(function(data) {
         // for(i = 0; i < data.length; i++){
         // allSongNames[i] = data[i].songOne;
@@ -190,7 +190,7 @@ function defineTracklists() {
 function excludeMixMatches(songName) {
     var excludeMatches = new Array();
     $.ajax({
-        url : "http://localhost:3000/songName/" + songName
+        url : constants.baseUrl + "songName/" + songName
     }).then(function(data) {
         // for(i = 0; i < data.length; i++){
         // allSongNames[i] = data[i].songOne;
@@ -232,7 +232,7 @@ function defineExcludedTypeAhead() {
 
 function definePossibleMatches(excludeMatches){
     $.ajax({
-        url : "http://localhost:3000/song/"
+        url : constants.baseUrl + "song/"
     }).then(function(data) {
         // for(i = 0; i < data.length; i++){
         // allSongNames[i] = data[i].songOne;
