@@ -36,11 +36,11 @@ module.exports = function(app, passport) {
     // SIGNUP ==============================
     // =====================================
     //show the signup form
-    app.get('/signup', function(req, res) {
-
-         // render the page and pass in any flash data if it exists
-         res.render('signup.ejs', { message: req.flash('signupMessage') });
-    });
+    //app.get('/signup', function(req, res) {
+    //
+    //     // render the page and pass in any flash data if it exists
+    //     res.render('signup.ejs', { message: req.flash('signupMessage') });
+    //});
     app.get('/signup', function(req, res) {
         res.sendfile(viewRoute + '/signup.html');// load the index.ejs file
     });
