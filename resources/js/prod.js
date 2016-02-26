@@ -1,4 +1,4 @@
 var constants = {
     "env": "prod",
-    "baseUrl": "http://localhost/"
+    "baseUrl": "http://107.170.203.239/"
 }
