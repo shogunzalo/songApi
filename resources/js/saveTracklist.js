@@ -1,5 +1,5 @@
 //Call once should be enough
-var baseUrl = constants.baseUrl;
+var baseUrl = "http://107.170.203.239/";
 var songLookupUrl = baseUrl + 'songName/';
 var artistLookupUrl = baseUrl + 'artistName/';
 var genresLookupUrl = baseUrl + 'genreByName/'
