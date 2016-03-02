@@ -392,7 +392,7 @@ function postArtist(artist, linksId, cb) {
         songArtist = {artistName: artist.artistName, artistLinks: linksId};
         postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
     }else {
-        songArtist = {artistName: artist};
+        songArtist = {artistName: artist.artistName};
         postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
     }
 
