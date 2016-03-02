@@ -393,7 +393,7 @@ function postArtist(artist, linksId, cb) {
         postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
     }else {
         songArtist = {artistName: artist};
-        postImage(artist, artist.replace(/\s/g, ''));
+        postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
     }
 
     $.ajax({
