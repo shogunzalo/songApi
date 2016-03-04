@@ -28,7 +28,7 @@ function saveTracklist(json){
         if(!artistExists){
             var linksId;
             postLinks(element.artistLinks, function(result){linksId = result})
-            postArtist(element, linksId, function(result){artistIds.push(result);});
+            postArtist(element.artistName, linksId, function(result){artistIds.push(result);});
         }else{
             artistIds.push(artistExists);
         }
@@ -389,11 +389,11 @@ function postArtist(artist, linksId, cb) {
     var songArtist;
 
     if(linksId != undefined && linksId.length > 0){
-        songArtist = {artistName: artist.artistName, artistLinks: linksId};
-        postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
+        songArtist = {artistName: artist, artistLinks: linksId};
+        postImage(artist, artist.replace(/\s/g, ''));
     }else {
-        songArtist = {artistName: artist.artistName};
-        postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
+        songArtist = {artistName: artist};
+        postImage(artist, artist.replace(/\s/g, ''));
     }
 
     $.ajax({
