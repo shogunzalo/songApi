@@ -14,10 +14,10 @@ var exec = require('child_process').exec;
 
 //POST
 exports.webCrawler = function(req, res){
-    //exec("(rm /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json; cd /Users/Gonzalo/Documents/webCrawler/djTest/djTest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
-    exec("(rm /opt/djCrawler/djCrawler/tracklist.json; cd /opt/djCrawler/djCrawler/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
-    //        exec("cat /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json", function (error, stdout, stderr) {
-            exec("cat /opt/djCrawler/djCrawler/tracklist.json", function (error, stdout, stderr) {
+    exec("(rm /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json; cd /Users/Gonzalo/Documents/webCrawler/djTest/djTest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
+    //exec("(rm /opt/djCrawler/djCrawler/tracklist.json; cd /opt/djCrawler/djCrawler/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
+            exec("cat /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json", function (error, stdout, stderr) {
+            //exec("cat /opt/djCrawler/djCrawler/tracklist.json", function (error, stdout, stderr) {
                 if (error !== null) {
                     console.log('exec error: ' + error);
                 }

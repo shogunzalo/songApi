@@ -5,7 +5,7 @@
 //File: controllers/links.js
 var mongoose = require('mongoose');
 var Image = require('../models/image.js');
-var http = require("http");
+var https = require("https");
 
 
 exports.findImage = function(req, res) {
@@ -31,6 +31,19 @@ exports.findImageByName = function(req, res) {
     });
 };
 
+exports.findImageById = function(req, res) {
+    Image.findById(req.params.id, function(err, images) {
+        if(err) return res.send(500, err.message);
+        if(images == null) return res.send(404, "Error");
+
+        console.log('GET /imageId/' + req.params.id);
+        //res.status(200).jsonp(images);
+        res.contentType(images.img.contentType);
+        res.send(images.img.data);
+
+    });
+};
+
 //Genre.find({genreName: req.params.id}, function(err, genre) {
 //    if(err) return res.send(500, err.message);
 //
@@ -46,7 +59,7 @@ exports.saveImage = function(req, res1) {
 
     console.log(req.body);
 
-    http.get(imgPath, function(res) {
+    https.get(imgPath, function(res) {
 
         var buffers = [];
         var length = 0;

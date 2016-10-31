@@ -134,9 +134,7 @@ app.get('/tracklistByArtist/:id', apiTracklist.findTracklistByArtist);
 app.get('/genreByName/:id', apiGenres.findGenreByName);
 app.get('/genres/', apiGenres.findAllGenres);
 app.get('/imageName/:id', apiImages.findImageByName);
-
-
-
+app.get('/imageId/:id', apiImages.findImageById);
 
 app.get('/artistSongs/:id', apiSongArtist.showArtistSongs);
 // app.get('/songMix/:id', apiSongMix.findMixBySongName);
@@ -151,8 +149,8 @@ app.delete('/mix/:id', apiMix.deleteMix);
 app.get('/song/:id', apiSong.findSongById);
 app.get('/artist/:id', apiArtist.findArtistById);
 
-app.listen(80, function() {
-  console.log("Node server running on http://localhost:80");
+app.listen(3000, function() {
+  console.log("Node server running on http://localhost:3000");
 });
 
 // connect to Mongo when the app initializes
