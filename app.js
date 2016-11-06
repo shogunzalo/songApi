@@ -153,8 +153,8 @@ app.delete('/mix/:id', apiMix.deleteMix);
 app.get('/song/:id', apiSong.findSongById);
 app.get('/artist/:id', apiArtist.findArtistById);
 
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(cfg.port, function() {
+  console.log("Node server running on http://localhost:" + cfg.port);
     console.log("Application environment: " + cfg.env);
 });
 
