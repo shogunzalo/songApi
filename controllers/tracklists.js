@@ -3,6 +3,7 @@
  */
 //File: controllers/songs.js
 var mongoose = require('mongoose');
+var cfg = require('./config')
 //var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var Tracklist = require('../models/tracklist.js');
 var Song = require('../models/song.js');
@@ -14,10 +15,17 @@ var exec = require('child_process').exec;
 
 //POST
 exports.webCrawler = function(req, res){
-    exec("(rm /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json; cd /Users/Gonzalo/Documents/webCrawler/djTest/djTest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
-    //exec("(rm /opt/djCrawler/djCrawler/tracklist.json; cd /opt/djCrawler/djCrawler/; scrapy crawl 1001tracklists -o tracklist.json -a start_url="+ req.body.url +")", function (error, stdout, stderr) {
-            exec("cat /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json", function (error, stdout, stderr) {
-            //exec("cat /opt/djCrawler/djCrawler/tracklist.json", function (error, stdout, stderr) {
+    var executionString;
+    var fileString;
+    if(cfg.env == 'production'){
+        executionString = "(rm /opt/djCrawler/djCrawler/tracklist.json; cd /opt/djCrawler/djCrawler/; scrapy crawl 1001tracklists -o tracklist.json -a start_url=" + req.body.url +")";
+        fileString ="cat /opt/djCrawler/djCrawler/tracklist.json"
+    }else if(cfg.env == 'development'){
+        executionString = "(rm /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json; cd /Users/Gonzalo/Documents/webCrawler/djTest/djTest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url=" + req.body.url +")";
+        fileString = "cat /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json";
+    }
+    exec(executionString, function (error, stdout, stderr) {
+            exec(fileString, function (error, stdout, stderr) {
                 if (error !== null) {
                     console.log('exec error: ' + error);
                 }

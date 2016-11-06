@@ -30,7 +30,7 @@ function saveTracklist(json){
         if(!artistExists){
             var linksId;
             postLinks(element.artistLinks, function(result){linksId = result})
-            postArtist(element, linksId, function(result){artistIds.push(result);});
+            postArtist(element.artistName, linksId, function(result){artistIds.push(result);});
         }else{
             artistIds.push(artistExists);
         }
@@ -169,6 +169,7 @@ function createTracklist(json, artistIds, cb){
         }
 
         postTracklist(tracklist, function(result){tracklistId = result});
+        postTracklistUrl(json[0].tracklistUrl[0])
         genresIds.forEach(function(element){
             putTracklistGenres(tracklistId, element);
         });
@@ -240,6 +241,20 @@ function postTracklist(tracklist, cb){
         async: false,
         success: function(data) {
             cb(data._id);
+        }
+    });
+    return false;
+}
+
+function postTracklistUrl(tracklistUrl){
+    $.ajax({
+        url: baseUrl + 'tracklistsScanned/',
+        type: 'post',
+        dataType: 'json',
+        data: {tracklistUrl: tracklistUrl},
+        async: false,
+        success: function(data) {
+            console.log("Tracklist url posted: " + tracklistUrl);
         }
     });
     return false;
@@ -407,16 +422,16 @@ function getImageUrl(params, artistName, cb){
 
 }
 
-function postArtist(artist, linksId, cb) {
+function postArtist(artistName, linksId, cb) {
 
     var songArtist;
 
     if(linksId != undefined && linksId.length > 0){
-        songArtist = {artistName: artist.artistName, artistLinks: linksId};
-        postImage(artist.artistName, artist.artistName.replace(/\s/g, ''));
+        songArtist = {artistName: artistName, artistLinks: linksId};
+        postImage(artistName, artistName.replace(/\s/g, ''));
     }else {
-        songArtist = {artistName: artist};
-        postImage(artist, artist.replace(/\s/g, ''));
+        songArtist = {artistName: artistName};
+        postImage(artistName, artistName.replace(/\s/g, ''));
     }
 
     $.ajax({

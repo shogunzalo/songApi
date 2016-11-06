@@ -12,6 +12,8 @@ var cookieParser = require('cookie-parser');
 //var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
+var cfg = require('./config')
+
 function requireRole(role) {
     return function(req, res, next) {
         console.log("Validating user.");
@@ -73,6 +75,7 @@ var apiTracklist = require('./controllers/tracklists.js');
 var apiLinks = require('./controllers/links.js');
 var apiGenres = require('./controllers/genres.js');
 var apiImages = require('./controllers/images.js');
+var apiTracklistsScanned = require('./controllers/tracklistsScannedCtrl.js');
 
 
 // var apiSongMix = require('./controllers/songMix.js');
@@ -87,6 +90,7 @@ app.post('/links', requireRole("admin"), apiLinks.addLinks);
 app.post('/genre', requireRole("admin"), apiGenres.addGenres);
 app.post('/webCrawler', requireRole("admin"), apiTracklist.webCrawler);
 app.post('/saveImage', requireRole("admin"), apiImages.saveImage)
+app.post('/tracklistsScanned', requireRole("admin"), apiTracklistsScanned.addTracklistScanned)
 
 //PUT
 app.put('/addMix/:id', requireRole("admin"), apiSong.addMixs);
@@ -151,6 +155,7 @@ app.get('/artist/:id', apiArtist.findArtistById);
 
 app.listen(3000, function() {
   console.log("Node server running on http://localhost:3000");
+    console.log("Application environment: " + cfg.env);
 });
 
 // connect to Mongo when the app initializes
