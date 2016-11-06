@@ -243,6 +243,8 @@
 
 <script>
 
+    var baseUrl = "/";
+
     function testFcn(params){
         if(params.indexOf("http://www.1001tracklists.com/tracklist/") == -1){
             return;
@@ -250,7 +252,7 @@
 
         $.ajax({
             type: "POST",
-            url: constants.baseUrl + "webCrawler",
+            url: baseUrl + "webCrawler",
             data: { url: params},
             beforeSend: function() {
                 $('#response').html("<img src='/images/loading.gif' />");
@@ -270,7 +272,7 @@
 
         $.ajax({
             type: "POST",
-            url: constants.baseUrl + "saveImage",
+            url: baseUrl + "saveImage",
             data: artistImage,
             beforeSend: function() {
                 $('#response').html("<img src='/images/loading.gif' />");
