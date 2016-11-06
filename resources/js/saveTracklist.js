@@ -1,3 +1,6 @@
+/**
+ * Created by gonzalo on 06-11-16.
+ */
 //Call once should be enough
 //var baseUrl = "http://107.170.203.239/";
 var baseUrl = "http://localhost:3000/";
@@ -329,7 +332,7 @@ function resolveSoundcloud(soundCloudLink, cb){
     }).then(
         function(data) {
             cb(data.uri);
-    });
+        });
 }
 
 function postLinks(params, cb){
@@ -451,8 +454,8 @@ function postArtist(artistName, linksId, cb) {
 //-------------------
 
 function mixExists(tracklist, index, cb){
-	//Check for tracklist[index - 1] and next Song as tracklist[index]
-	//return true if exist or false if doesn't
+    //Check for tracklist[index - 1] and next Song as tracklist[index]
+    //return true if exist or false if doesn't
     var count = 0;
     var previous;
 
@@ -463,8 +466,8 @@ function mixExists(tracklist, index, cb){
         }
     }
 
-	return $.when(searchSong(tracklist[previous]), searchSong(tracklist[index])).done(function(song1, song2){
-    	if(song1.length > 0 && song1[2].responseJSON[0] != undefined && song1[2].responseJSON[0].songMixs != undefined){
+    return $.when(searchSong(tracklist[previous]), searchSong(tracklist[index])).done(function(song1, song2){
+        if(song1.length > 0 && song1[2].responseJSON[0] != undefined && song1[2].responseJSON[0].songMixs != undefined){
             song1[2].responseJSON[0].songMixs.forEach(function(element, index, array){
                 if(element.nextSong._id == song2[2].responseJSON[0]._id){
                     count++;
@@ -478,16 +481,16 @@ function mixExists(tracklist, index, cb){
         }else{
             cb(false);
         }
-	});
+    });
 }
 
 function checkIfSongExists(song, cb){
-	//Ajax call
-	//If null/empty or doesnt exists return false
-	$.ajax({
-	  url: songLookupUrl + encodeURIComponent(song.songName),
-      async: false
-	}).then(function(data){
+    //Ajax call
+    //If null/empty or doesnt exists return false
+    $.ajax({
+        url: songLookupUrl + encodeURIComponent(song.songName),
+        async: false
+    }).then(function(data){
         if(data == undefined || data.length == 0){
             //console.log("Posting song: " + song.songName);
             cb(false);
@@ -513,17 +516,17 @@ function searchSong(song){
 function saveMix(tracklist, index, tracklistId){
     var boolResult;
     mixExists(tracklist, index, function(result){boolResult = result});
-	if(tracklist[index].songNumber != 'w/' && !boolResult){
-		//If the current track is a number
-		//Mix with the previous one
-		//Save as the latest track number
-		postMix(tracklist, index, lastNumberTrack, tracklistId);
-		lastNumberTrack = index;
-	}else if(tracklist[index].songNumber == 'w/' && !boolResult){
-		//If the current track is a with
-		//Mix with the latest number track
-		postMix(tracklist, index, lastNumberTrack, tracklistId);
-	}else if(boolResult){
+    if(tracklist[index].songNumber != 'w/' && !boolResult){
+        //If the current track is a number
+        //Mix with the previous one
+        //Save as the latest track number
+        postMix(tracklist, index, lastNumberTrack, tracklistId);
+        lastNumberTrack = index;
+    }else if(tracklist[index].songNumber == 'w/' && !boolResult){
+        //If the current track is a with
+        //Mix with the latest number track
+        postMix(tracklist, index, lastNumberTrack, tracklistId);
+    }else if(boolResult){
         console.log("Mix already exists");
     }
 }
