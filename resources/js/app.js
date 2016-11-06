@@ -2,6 +2,8 @@ var isEncoded = function(str){
     return decodeURIComponent(str) !== str;
 }
 
+var baseUrl = "/"
+
 Handlebars.registerHelper('autoPlayFalseSoundCLoud', function(params) {
     return params.replace("&auto_play=true", "&auto_play=false");
 });
@@ -54,7 +56,7 @@ function searchSong(inputText) {
     }
 
 	$.ajax({
-		url : constants.baseUrl + "songName/" + inputText
+		url : baseUrl + "songName/" + inputText
 	}).then(
 			function(data) {
 				emptyFields();
@@ -119,7 +121,7 @@ var allButExcluded = new Array();
 // another way to avoid the for loop
 function defineNames() {
 	$.ajax({
-		url : constants.baseUrl + "song/"
+		url : baseUrl + "song/"
 	}).then(function(data) {
 		// for(i = 0; i < data.length; i++){
 		// allSongNames[i] = data[i].songOne;
@@ -141,7 +143,7 @@ function defineNames() {
 
 function defineArtists() {
 	$.ajax({
-		url : constants.baseUrl + "artist/"
+		url : baseUrl + "artist/"
 	}).then(function(data) {
 		// for(i = 0; i < data.length; i++){
 		// allSongNames[i] = data[i].songOne;
@@ -163,7 +165,7 @@ function defineArtists() {
 
 function defineTracklists() {
     $.ajax({
-        url : constants.baseUrl + "tracklists/"
+        url : baseUrl + "tracklists/"
     }).then(function(data) {
         // for(i = 0; i < data.length; i++){
         // allSongNames[i] = data[i].songOne;
@@ -190,7 +192,7 @@ function defineTracklists() {
 function excludeMixMatches(songName) {
     var excludeMatches = new Array();
     $.ajax({
-        url : constants.baseUrl + "songName/" + songName
+        url : baseUrl + "songName/" + songName
     }).then(function(data) {
         // for(i = 0; i < data.length; i++){
         // allSongNames[i] = data[i].songOne;
@@ -232,7 +234,7 @@ function defineExcludedTypeAhead() {
 
 function definePossibleMatches(excludeMatches){
     $.ajax({
-        url : constants.baseUrl + "song/"
+        url : baseUrl + "song/"
     }).then(function(data) {
         // for(i = 0; i < data.length; i++){
         // allSongNames[i] = data[i].songOne;
