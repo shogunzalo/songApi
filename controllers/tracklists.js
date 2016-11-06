@@ -3,7 +3,7 @@
  */
 //File: controllers/songs.js
 var mongoose = require('mongoose');
-var cfg = require('./config')
+var cfg = require('../config')
 //var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var Tracklist = require('../models/tracklist.js');
 var Song = require('../models/song.js');
