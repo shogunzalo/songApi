@@ -1,11 +1,13 @@
 //Call once should be enough
-var baseUrl = "http://107.170.203.239/";
+//var baseUrl = "http://107.170.203.239/";
+var baseUrl = "http://localhost:3000/";
 var songLookupUrl = baseUrl + 'songName/';
 var artistLookupUrl = baseUrl + 'artistName/';
 var genresLookupUrl = baseUrl + 'genreByName/'
 var tracklistLookupUrl = baseUrl + 'tracklistByName/'
 var lastNumberTrack = 1;
 var clientId = "d5ec21bf0dd9b8fea2cfe34033b988d4";
+const ID_TRACK = 'ID';
 
 
 function readTracklist(){
@@ -83,22 +85,43 @@ function saveTracklistSongs(tracklist, tracklistId){
         var artistData;
         var songExists;
         var artistExists;
+        var songName;
+        var artistName;
+
+        if(element.artistName == ID_TRACK){
+            //If the track is an unidentified track we want to save some unique name to it
+            //I: index T: track list S: song A: artist
+            artistName = element.artistName + "-T" + tracklistId + "A";
+        } else {
+            //keep the song and artist name as they are
+            artistName = element.artistName;
+        }
+
+        if(element.songName == ID_TRACK){
+            //If the track is an unidentified track we want to save some unique name to it
+            //I: index T: track list S: song A: artist
+            songName = element.songName + "-I" + element.songIndex + "T" + tracklistId + "S";
+        } else {
+            //keep the song and artist name as they are
+            songName = element.songName;
+        }
+
         checkIfArtistExists(element.artistName, function (result){
             artistExists = result;
-            if(!result){
-                postArtist(element.artistName, null, function(result){artistExists = result})
+            if(!result || element.artistName == ID_TRACK){
+                postArtist(artistName, null, function(result){artistExists = result});
             }
         });
 
         checkIfSongExists(element, function(result){
-            if(!result){
-                var songJson = {"songName": element.songName,"bpm": element.songBpm,"key": element.songKey,"songPublisher": element.songPublisher,"genre":"","summary":"","songArtist": artistExists};
+            if(!result || element.songName == ID_TRACK){
+                var songJson = {"songName": songName,"bpm": element.songBpm,"key": element.songKey,"songPublisher": element.songPublisher,"genre":"","summary":"","songArtist": artistExists};
                 postLinks(element.songLinks, function(result){
                     if(result.length > 0){
-                        songJson.songLinks = result
+                        songJson.songLinks = result;
                     }
                 });
-                postSong(songJson, function(result){songExists = result})
+                postSong(songJson, function(result){songExists = result});
             }else{
                 songExists = result
             }
@@ -146,6 +169,7 @@ function createTracklist(json, artistIds, cb){
         }
 
         postTracklist(tracklist, function(result){tracklistId = result});
+        postTracklistUrl(json[0].tracklistUrl[0])
         genresIds.forEach(function(element){
             putTracklistGenres(tracklistId, element);
         });
@@ -217,6 +241,20 @@ function postTracklist(tracklist, cb){
         async: false,
         success: function(data) {
             cb(data._id);
+        }
+    });
+    return false;
+}
+
+function postTracklistUrl(tracklistUrl){
+    $.ajax({
+        url: baseUrl + 'tracklistsScanned/',
+        type: 'post',
+        dataType: 'json',
+        data: {tracklistUrl: tracklistUrl},
+        async: false,
+        success: function(data) {
+            console.log("Tracklist url posted: " + tracklistUrl);
         }
     });
     return false;
@@ -346,7 +384,7 @@ function postImage(artistName, artistNameTrim){
     getImageUrl(artistNameTrim, artistName, function(params){
 
         imageUrl = params;
-        artistImage = {imageName: artistName, imgUrl: "http:" + imageUrl};
+        artistImage = {imageName: artistName, imgUrl: "https:" + imageUrl};
 
         $.ajax({
             url: baseUrl + 'saveImage/',
@@ -384,16 +422,16 @@ function getImageUrl(params, artistName, cb){
 
 }
 
-function postArtist(artist, linksId, cb) {
+function postArtist(artistName, linksId, cb) {
 
     var songArtist;
 
     if(linksId != undefined && linksId.length > 0){
-        songArtist = {artistName: artist, artistLinks: linksId};
-        postImage(artist, artist.replace(/\s/g, ''));
+        songArtist = {artistName: artistName, artistLinks: linksId};
+        postImage(artistName, artistName.replace(/\s/g, ''));
     }else {
-        songArtist = {artistName: artist};
-        postImage(artist, artist.replace(/\s/g, ''));
+        songArtist = {artistName: artistName};
+        postImage(artistName, artistName.replace(/\s/g, ''));
     }
 
     $.ajax({
@@ -493,7 +531,28 @@ function saveMix(tracklist, index, tracklistId){
 //Insert mix
 
 function postMix(tracklist, index, lastNumberTrack, tracklistId) {
-    var mixData = {songName: tracklist[lastNumberTrack], nextSong: tracklist[index].songName};
+    var nextSongName;
+    var songName;
+
+    if(tracklist[index].songName == ID_TRACK){
+        //If the track is an unidentified track we want to save some unique name to it
+        //I: index T: track list S: song A: artist
+        nextSongName = tracklist[index].songName + "-I" + (index - 1) + "T" + tracklistId + "S";
+    } else {
+        //keep the song and artist name as they are
+        nextSongName = tracklist[index].songName;
+    }
+
+    if(tracklist[lastNumberTrack].songName == ID_TRACK){
+        //If the track is an unidentified track we want to save some unique name to it
+        //I: index T: track list S: song A: artist
+        songName = tracklist[lastNumberTrack].songName + "-I" + (lastNumberTrack - 1) + "T" + tracklistId + "S";
+    } else {
+        //keep the song and artist name as they are
+        songName = tracklist[lastNumberTrack].songName;
+    }
+
+    var mixData = {songName: songName, nextSong: nextSongName};
 
     $.ajax({
         url : baseUrl + "songName/" + encodeURIComponent(mixData.nextSong),
@@ -527,7 +586,7 @@ function insertMix(mixData, tracklistId){
 
 function searchSongId(songName, mixId){
     $.ajax({
-        url : baseUrl + "songName/" + encodeURIComponent(songName.songName),
+        url : baseUrl + "songName/" + encodeURIComponent(songName),
         async: false
     }).then(function(data) {
         insertMixIntoSong(data[0]._id, mixId);
