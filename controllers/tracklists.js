@@ -18,8 +18,8 @@ exports.webCrawler = function(req, res){
     var executionString;
     var fileString;
     if(cfg.env == 'production'){
-        executionString = "(rm /opt/Dj-crawler/djTest/tracklist.json; cd /opt/Dj-crawler/djTest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url=" + req.body.url +")";
-        fileString ="cat /opt/Dj-crawler/djTest/tracklist.json"
+        executionString = "(rm /opt/Dj-crawler/djtest/tracklist.json; cd /opt/Dj-crawler/djtest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url=" + req.body.url +")";
+        fileString ="cat /opt/Dj-crawler/djtest/tracklist.json"
     }else if(cfg.env == 'development'){
         executionString = "(rm /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json; cd /Users/Gonzalo/Documents/webCrawler/djTest/djTest/; scrapy crawl 1001tracklists -o tracklist.json -a start_url=" + req.body.url +")";
         fileString = "cat /Users/Gonzalo/Documents/webCrawler/djTest/djTest/tracklist.json";
