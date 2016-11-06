@@ -4,6 +4,7 @@
 //Call once should be enough
 //var baseUrl = "http://107.170.203.239/";
 //var baseUrl = "http://localhost:3000/";
+var baseUrl = "/";
 var songLookupUrl = baseUrl + 'songName/';
 var artistLookupUrl = baseUrl + 'artistName/';
 var genresLookupUrl = baseUrl + 'genreByName/'
@@ -11,6 +12,7 @@ var tracklistLookupUrl = baseUrl + 'tracklistByName/'
 var lastNumberTrack = 1;
 var clientId = "d5ec21bf0dd9b8fea2cfe34033b988d4";
 const ID_TRACK = 'ID';
+
 
 
 function readTracklist(){
